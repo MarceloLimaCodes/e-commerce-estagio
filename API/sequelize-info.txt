@@ -24,6 +24,3 @@ pacotes:
 	
 - Para desfazer a última migration use:
 	( npx sequelize db:migrate:undo )
-	
-	
-ultima parte da aula = 1:07:00
