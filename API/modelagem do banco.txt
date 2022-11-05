@@ -1,0 +1,98 @@
+Tabela usuario
+	id			<= chave primária
+	idColuna		<= chave estrangeira do fornecedor
+	nome			<= varchar
+	email			<= varchar
+	senha			<= varchar
+	cpf			<= char
+	foto-perfil		<= blob
+	permissão		<= boolean
+	ativo			<= boolean
+	
+Tabela fornecedor
+	id			<= chave primária
+	nome			<= varchar
+	qnt_clientes		<= float
+	
+Tabela categoria
+	id			<= chave primária
+	descrição		<= varchar
+	
+Tabela produto
+	id			<= chave primária
+	categoria_id		<= chave estrangeira
+	nome			<= varchar
+	descrição-simples 	<= varchar
+	descrição-detalhada 	<= varchar
+	sabor			<= varchar
+	desconto		<= float
+	valor			<= float
+	valor-final		<= float
+	ativo			<= boolean
+	
+	imagem1 		<= blob 	tamanho (500x625)
+	imagem2			<= blob 	tamanho (500x625)
+	imagem3			<= blob 	tamanho (500x625)
+	imagem4			<= blob 	tamanho (500x625)
+	imagem5			<= blob 	tamanho (500x625)
+
+Tabela cliente
+	id 			<= chave primária
+	nome			<= varchar
+	email			<= varchar
+	CPF			<= char
+	whatsapp		<= char
+	celular			<= char
+	cep			<= char
+	rua			<= varchar
+	numero			<= float
+	bairro			<= varchar
+	cidade			<= varchar
+	estado			<= varchar
+	observação		<= varchar
+	
+Tabela contatos
+	celular			<= char
+	whatsapp		<= char
+	endereço		<= varchar
+	email			<= varchar
+	site			<= varchar
+	geo-localização		<= varchar
+	observação		<= varchar
+	
+Tabela link-pagamento
+	cliente			<= chave estrangeira & chave primária composta
+	produto			<= chave estrangeira & chave primária composta
+	valor-total		<= float
+	comissão (%)		<= float
+	quantidade		<= float
+	data			<= date
+	hora			<= date
+		
+Tabela informaçoes		(Sobre nós)
+	representante_id	<= chave estrangeira do fornecedor
+	descrição		<= varchar
+	visão			<= varchar
+	missão			<= varchar
+	
+Tabela banner
+	imagem			<= blob 	tamanho (1432x560)
+	observação		<= varchar
+	status			<= boolean
+	
+Tabela carrinho
+	user_id			<= chave estrangeira & chave primária composta
+	produto_id		<= chave estrangeira & chave primária composta
+	quantidade		<= float
+
+
+	
+Tabela venda
+	cliente_id		<= chave estrangeira id cliente
+	representante_id	<= chave estrangeira fornecedor
+	valor			<= float
+	comissão		<= float
+	data			<= date
+	hora			<= date
+	status			<= boolean
+	

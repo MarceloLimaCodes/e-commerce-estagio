@@ -1,0 +1,29 @@
+pacotes:
+	npm i express			.biblioteca padrão backend do node
+	npm i mysql2			.driver do banco de dados
+	npm i sequelize			.modulo do orm que iremos usar
+	npm i sequelize-cli		.para manipulação usando variáveis de ambiente
+	npm i nodemon			.reiniciar o server automaticamente depois de alguma alteração
+	
+- use para informações de variáveis de ambiente ou acesse a documentação do sequelize
+
+	( npx sequelize-cli --help ) 
+
+
+- para fazer operações no banco de dados mySql, você vai precisar passar algumas variáveis de ambiente na hora de rodar uma migration por exemplo. Veja o exemplo abaixo.
+- temos que passar a flag '--' por conta do nodejs e essa rota http para passar o usuário e senha do root:
+
+	( npx sequelize-cli db:create -- --url 'mysql://root:example@3306/admin' ): o nome 'example' é onde colocará a senha do root, veja mais detalhes na documentação
+
+
+- Para criar uma migration:
+	( npx sequelize migration:create --name=create-users )
+
+- Para rodar a migration:
+	( npx sequelize db:migrate )
+	
+- Para desfazer a última migration use:
+	( npx sequelize db:migrate:undo )
+	
+	
+ultima parte da aula = 1:07:00

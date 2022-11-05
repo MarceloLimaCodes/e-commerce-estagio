@@ -1,0 +1,2 @@
+criar uma rota pra busca no backend
+criar uma página html de busca dentro da tela inicial do front
