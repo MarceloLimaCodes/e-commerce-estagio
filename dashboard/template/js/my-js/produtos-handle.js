@@ -36,32 +36,30 @@ axios.get(`${url}/categorias`)
 
 function cadastrar() {
     /* criar validação pra poder executar a função axios.post */
-
-    /* quando for cadastrar, usar a rota de busca para buscar pelo nome exatamente o id do nome buscado  */
     
-    axios.get(`${url}/categorias/busca`, {   /* Trocar no backend para método post pra poder enviar um json */
+    axios.post(`${url}/categorias/busca`, { 
         nome: document.getElementById('categorias-input').value
     })
     .then(response => {
         let categoriaEncontrada = response.data
-        console.log(categoriaEncontrada)
-       /*  axios.post(`${url}/produtos`, {
-            nome,
-            categoria_id: categoriaEncontrada.id,
-            sabor,
-            valor,
-            quantidade,
-            desconto,
-            valor_final,
+
+        axios.post(`${url}/produtos`, {
+            nome: document.getElementById('nome').value,
+            categoria_id: categoriaEncontrada[0].id,
+            sabor: document.getElementById('sabor').value,
+            valor: document.getElementById('valor').value,
+            quantidade: document.getElementById('quantidade').value,
+            desconto: document.getElementById('desconto').value,
+            valor_final: document.getElementById('valorFinal').value,
     
-            imagem1,
-            imagem2,
-            imagem3,
-            imagem4,
-            imagem5,
+            imagem1: document.getElementById('imagem1'),
+            imagem2: document.getElementById('imagem2'),
+            imagem3: document.getElementById('imagem3'),
+            imagem4: document.getElementById('imagem4'),
+            imagem5: document.getElementById('imagem5'),
             
-            descricao_curta,
-            descricao_longa
+            descricao_curta: document.getElementById('descricaoCurta').value,
+            descricao_longa: document.getElementById('descricaoLonga').value,
         })
         .then(response => {
             let data = response.data
@@ -83,10 +81,11 @@ function cadastrar() {
             <button class="my-button" onclick="fechar()">Ok</button>
                 
             `
-    
+
             confirmDiv.appendChild(confirmBox)
+
         })
-        .catch(error => {console.log(error)}) */
+        .catch(error => console.log(error))
     })
     .catch(error => console.log(error))
 
@@ -96,4 +95,5 @@ function cadastrar() {
 function fechar() {
     html = document.querySelector("*")
     html.removeChild(document.querySelector('.confirm-div'))
+    window.location.reload()
 }
