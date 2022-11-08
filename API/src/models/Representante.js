@@ -7,7 +7,8 @@ class Representante extends Model {
             super.init({
                 
                 nome: DataTypes.STRING,
-                qnt_clientes: DataTypes.INTEGER
+                qnt_clientes: DataTypes.INTEGER,
+                comissao: DataTypes.FLOAT
                 
             }, {
                 sequelize: connection

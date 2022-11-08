@@ -16,9 +16,9 @@ module.exports = {
     
     async criar(req, res) {
         try {
-            const { nome, qnt_clientes } = req.body
+            const { nome, qnt_clientes, comissao } = req.body
 
-            const representante = await Representante.create({ nome, qnt_clientes })
+            const representante = await Representante.create({ nome, qnt_clientes, comissao })
 
             return res.json(representante)
 
@@ -31,16 +31,17 @@ module.exports = {
     async editar(req, res) {
         try {
             const { id } = req.params
-            const { nome, qnt_clientes } = req.body
+            const { nome, qnt_clientes, comissao } = req.body
     
             let representante = await Representante.findByPk(id)
     
             if(!representante) {
-                return res.status(400).json({ error: 'categoria não encontrada' })
+                return res.status(400).json({ error: 'Representante não encontrado' })
             }
             
             representante.nome = nome ? nome : representante.nome
             representante.qnt_clientes = qnt_clientes ? qnt_clientes : representante.qt_clientes
+            representante.comissao = comissao ? comissao : representante.comissao
     
             return res.json(representante)
             

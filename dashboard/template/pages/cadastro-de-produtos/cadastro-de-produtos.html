@@ -25,20 +25,41 @@
 
   <style>                       /* estilizações que tive que modificar/corrigir */
     .col-sm-9 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    #textarea-description {
-        margin-left: 15px;
-        width: 98.2%;
-        margin-bottom: 20px;
-        padding-bottom: 50px;
+    #descricaoCurta {
+      margin-left: 15px;
+      width: 98.2%;
+      margin-bottom: 20px;
+      padding-bottom: 50px;
+    }
+
+    #descricaoLonga {
+      margin-left: 15px;
+      width: 98.2%;
+      margin-bottom: 20px;
+      padding-bottom: 50px;
+    }
+
+    #color-result {
+      text-align: right;
     }
 
     .row label {
-        margin-bottom: 10px;
+      margin-bottom: 10px;
+    }
+
+    #categorias-label {
+      display: flex;
+      margin-top: 2%;
+    }
+
+    #categorias-input {
+      margin-left: 18%;
+      min-width: 74%;
     }
 
   </style>
@@ -591,16 +612,16 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Cadastro de produto</h4>
-                                <form class="form-sample">
-                                <p class="card-description">
-                                    Realize o cadastro dos seus produtos, é muito importante que você coloque as imagens e valores de cada produto
-                                </p>
+                                
+                                  <p class="card-description">
+                                      Realize o cadastro dos seus produtos, é muito importante que você coloque as imagens e valores de cada produto
+                                  </p>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Nome</label>
                                                 <div class="col-sm-9">
-                                                <input type="text" class="form-control" />
+                                                <input type="text" id="nome" class="form-control" />
                                                 </div>
                                             </div>
                                         </div>
@@ -609,7 +630,7 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Valor</label>
                                                 <div class="col-sm-9">
-                                                    <input class="form-control" type="number" placeholder="0,00"/>
+                                                    <input class="form-control" type="number" id="valor" placeholder="0,00"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -617,13 +638,23 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                                <label class="col-sm-3 col-form-label">Categoria</label>
-                                                <div class="col-sm-9">
-                                                    <select class="form-control">
-                                                        <option>Categoria1</option>
-                                                        <option>Categoria2</option>
-                                                    </select>
+                                              <label id="categorias-label">
+                                                Categoria
+                                                <input id="categorias-input" list="categorias">
+                                              </label>
+                                              
+                                              <datalist id="categorias">
+                                                <div id="result"> 
+                                                  <script id="template" type="x-tmpl-mustache">
+                                                    {{#data}}
+                                                      <option>{{nome}}</option>
+                                                    {{/data}}
+                                                  </script>
                                                 </div>
+                                              </datalist>
+                                              <p id="color-result"></p>
+                                              <!-- depois fazer uma condição para a borda ficar em vermelho caso o que esteja digitado não seja uma categoria valida entre as possíveis -->
+                                             
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -669,7 +700,7 @@
                                     
                                         <div class="form-group">
                                             <label>Imagem 1 (Capa) (500x625)</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem1" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -679,7 +710,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 2 (500x625)</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem2" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -689,7 +720,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 3 (500x625)</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem3" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -699,7 +730,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 4 (500x625)</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem4" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -709,7 +740,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 5 (500x625)</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem5" name="img[]" class="file-upload-default">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -720,15 +751,16 @@
 
                                         <div class="row" >
                                             <label class="col-sm-3 col-form-label" >Descrição Curta</label>
-                                            <textarea name="" class="form-control" id="textarea-description" cols="30" wrap="hard"></textarea>
+                                            <textarea name="" class="form-control" id="descricaoCurta" cols="30" wrap="hard"></textarea>
+
                                             <label class="col-sm-3 col-form-label" >Descrição Longa</label>
-                                            <textarea name="" class="form-control" id="textarea-description" cols="30" wrap="hard"></textarea>
+                                            <textarea name="" class="form-control" id="descricaoLonga" cols="30" wrap="hard"></textarea>
                                         </div>
                                     </div>
                                     
-                                    <button type="submit" class="btn btn-primary me-2">Enviar</button>
+                                  <button onclick="cadastrar()" class="btn btn-primary me-2">Cadastrar</button>
 
-                                </form>
+                                
                             </div>
                         </div>
                         <footer class="footer">
@@ -748,6 +780,17 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/produtos-handle.js"></script>
+
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

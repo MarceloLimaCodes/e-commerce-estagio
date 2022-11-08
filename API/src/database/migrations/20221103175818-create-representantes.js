@@ -20,6 +20,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNUll: false
       },
+
+      comissao: {
+        type: Sequelize.FLOAT,
+        allowNUll: false
+      },
       
       created_at: {
         type: Sequelize.DATE,

@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="../../vendors/typicons/typicons.css">
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+
+  <!-- my-css -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
   <!-- endinject -->
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
@@ -30,7 +34,7 @@
         justify-content: center;
     }
 
-    #textarea-observação {
+    #observacao {
         padding-bottom: 70px;
     }
   </style>
@@ -549,19 +553,19 @@
                             <p class="card-description">
                                 Cadastro de Categoria
                             </p>
-                            <form class="forms-sample">
+                            <!-- <form class="forms-sample"> -->
                               <div class="form-group">
-                                <label for="input-nome">Nome</label>
-                                <input type="text" class="form-control" id="input-nome" placeholder="Nome">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome" placeholder="Nome">
                               </div>
                               <div class="form-group">
-                                <label for="input-observação">Observação</label>
-                                <textarea name="Observação" class="form-control" placeholder="Observação" id="textarea-observação" wrap="hard" cols="30"></textarea>
+                                <label for="observacao">Observação</label>
+                                <textarea name="Observação" class="form-control" placeholder="Observação" id="observacao" wrap="hard" cols="30"></textarea>
                               </div>
                               
-                              <button type="submit" class="btn btn-primary me-2">Submit</button>
-                              <button class="btn btn-light">Cancel</button>
-                            </form>
+                              <button onclick="cadastrar()" class="btn btn-primary me-2">Cadastrar</button>
+                              <!-- <button class="btn btn-light">Cancel</button> -->
+                            <!-- </form> -->
                           </div>
                         </div>
                     </div>
@@ -581,6 +585,16 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/categorias-handle.js"></script>
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

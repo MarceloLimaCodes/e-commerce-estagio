@@ -533,85 +533,50 @@
                   <p class="card-description">
                     Add class <code>.table-{color}</code> <strong> cada cor tem um significado</strong>
                   </p>
+
+                  <!-- class colors: -->
+                  <!-- class="table-info"    <- azul -->
+                  <!-- class="table-warning" <- amarelo escuro -->
+                  <!-- class="table-danger"  <- vermelho -->
+                  <!-- class="table-success" <- verde claro -->
+                  <!-- class="table-primary" <- conza normal -->
+
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            Nome
-                          </th>
-                          <th>
-                            Observação
-                          </th>
-                          <th>
-                            Ação
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="table-info">
-                          <td>
-                            Herman Beck
-                          </td>
-                      
-                          <td>
-                            Observação
-                          </td>
-                          <td>
-                            ação
-                          </td>
-                        </tr>
-                        <tr class="table-warning">
-                          <td>
-                            Messsy Adam
-                          </td>
-                       
-                          <td>
-                            Observação
-                          </td>
-                          <td>
-                            ação
-                          </td>
-                        </tr>
-                        <tr class="table-danger">
-                          <td>
-                            John Richards
-                          </td>
-                          
-                          <td>
-                            Observação
-                          </td>
-                          <td>
-                            ação
-                          </td>
-                        </tr>
-                        <tr class="table-success">
-                          <td>
-                            Peter Meggik
-                          </td>
+                    <div id="result">
+                      <script id="template" type="x-tmpl-mustache">  
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>
+                                Nome
+                              </th>
+                              <th>
+                                Observação
+                              </th>
+                              <th>
+                                Ação
+                              </th>
+                            </tr>
+                          </thead>
+
+                          {{#data}}
+                            <tr class="table-primary">
+                              <td>
+                                {{nome}}
+                              </td>
+                              <td>
+                                {{observacao}}
+                              </td>
+                              <td>
+                                ação
+                              </td>
+                            </tr>
+                          {{/data}}
+
+                        </table>
                         
-                          <td>
-                            Observação
-                          </td>
-                          <td>
-                            ação
-                          </td>
-                        </tr>
-                        <tr class="table-primary">
-                          <td>
-                            Edward
-                          </td>
-                          
-                          <td>
-                            Observação
-                          </td>
-                          <td>
-                            ação
-                          </td>
-                       
-                        </tr>
-                      </tbody>
-                    </table>
+                      </script>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -633,6 +598,16 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- categorias-listagem e MUSTACHE RENDER (get all categorias) -->
+  <script src="../../js/my-js/categorias-handle.js"></script>
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

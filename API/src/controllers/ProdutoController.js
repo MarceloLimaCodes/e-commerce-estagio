@@ -20,7 +20,7 @@ module.exports = {
         try {
             const { 
                 nome,
-                ativo,
+                /* ativo, */
                 categoria_id,
                 sabor, 
                 quantidade, 
@@ -40,7 +40,7 @@ module.exports = {
 
             const produto = await Produto.create({ 
                 nome,
-                ativo,
+                ativo: "true",
                 categoria_id,
                 sabor, 
                 quantidade, 
