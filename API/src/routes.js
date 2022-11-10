@@ -4,6 +4,7 @@ const ClienteController = require('./controllers/ClienteController')
 const ProdutoController = require('./controllers/ProdutoController')
 const CategoriaController = require('./controllers/CategoriaController')
 const RepresentanteController = require('./controllers/RepresentanteController')
+const LinkController = require('./controllers/LinkController')
 
 const routes = express.Router()
 
@@ -34,5 +35,11 @@ routes.post('/representantes/busca', RepresentanteController.buscar)
 routes.post('/representantes', RepresentanteController.criar)
 routes.put('/representantes/:id', RepresentanteController.editar)
 routes.delete('/representantes/:id', RepresentanteController.deletar)
+
+// LINKS
+routes.get('/links', LinkController.listar)
+routes.post('/links', LinkController.criar)
+routes.put('/links/:id', LinkController.editar)
+routes.delete('/links/:id', LinkController.deletar)
 
 module.exports = routes

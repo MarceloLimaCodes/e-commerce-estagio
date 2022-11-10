@@ -1,6 +1,6 @@
 const url = "http://localhost:3000"
 
-
+// CADASTRO DE PRODUTO
 /* get nas categorias para preencher a tag option com o mustache  */
 axios.get(`${url}/categorias`)
 .then(response => {
@@ -8,8 +8,6 @@ axios.get(`${url}/categorias`)
     document.getElementById('result').innerHTML = Mustache.render(template, response)
 })
 .catch(error => console.log(error))
-
-
 
 axios.get(`${url}/categorias`)
 .then(response => {
@@ -33,7 +31,6 @@ axios.get(`${url}/categorias`)
 })
 .catch(error => console.log(error))
 
-
 function cadastrar() {
     /* criar validação pra poder executar a função axios.post */
     
@@ -52,11 +49,11 @@ function cadastrar() {
             desconto: document.getElementById('desconto').value,
             valor_final: document.getElementById('valorFinal').value,
     
-            imagem1: document.getElementById('imagem1'),
-            imagem2: document.getElementById('imagem2'),
-            imagem3: document.getElementById('imagem3'),
-            imagem4: document.getElementById('imagem4'),
-            imagem5: document.getElementById('imagem5'),
+            imagem1: document.getElementById('imagem1').value,
+            imagem2: document.getElementById('imagem2').value,
+            imagem3: document.getElementById('imagem3').value,
+            imagem4: document.getElementById('imagem4').value,
+            imagem5: document.getElementById('imagem5').value,
             
             descricao_curta: document.getElementById('descricaoCurta').value,
             descricao_longa: document.getElementById('descricaoLonga').value,
@@ -97,3 +94,6 @@ function fechar() {
     html.removeChild(document.querySelector('.confirm-div'))
     window.location.reload()
 }
+
+// LISTAGEM DE PRODUTOS
+

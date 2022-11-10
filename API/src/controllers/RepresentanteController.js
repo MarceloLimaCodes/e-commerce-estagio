@@ -40,7 +40,7 @@ module.exports = {
             }
             
             representante.nome = nome ? nome : representante.nome
-            representante.qnt_clientes = qnt_clientes ? qnt_clientes : representante.qt_clientes
+            representante.qnt_clientes = qnt_clientes ? qnt_clientes : representante.qnt_clientes
             representante.comissao = comissao ? comissao : representante.comissao
     
             return res.json(representante)
@@ -76,7 +76,8 @@ module.exports = {
                     nome: {
                         [Op.like]: `${nome}%`
                     }
-                }})
+                }
+            })
 
             if(!representantes) {
                 return res.status(400).json({ error: 'Representante não encontrado' })

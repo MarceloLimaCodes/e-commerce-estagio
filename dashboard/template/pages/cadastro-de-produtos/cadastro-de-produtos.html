@@ -56,14 +56,21 @@
       margin-bottom: 10px;
     }
 
-    #categorias-label {
+    .float {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #categorias-label {
       margin-top: 2%;
     }
 
     #categorias-input {
-      margin-left: 18%;
-      min-width: 74%;
+      width: 73.7%;
+      height: 70%;
+      border-radius: 4px;
+
     }
 
   </style>
@@ -642,20 +649,23 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group row">
-                                              <label id="categorias-label">
-                                                Categoria
+                                              <div class="float" >
+                                                <label id="categorias-label" for="categorias-input">
+                                                  Categoria
+                                                </label>
+                                                
                                                 <input id="categorias-input" list="categorias">
-                                              </label>
-                                              
-                                              <datalist id="categorias">
-                                                <div id="result"> 
-                                                  <script id="template" type="x-tmpl-mustache">
-                                                    {{#data}}
-                                                      <option>{{nome}}</option>
-                                                    {{/data}}
-                                                  </script>
-                                                </div>
-                                              </datalist>
+                                                
+                                                <datalist id="categorias">
+                                                  <div id="result"> 
+                                                    <script id="template" type="x-tmpl-mustache">
+                                                      {{#data}}
+                                                        <option>{{nome}}</option>
+                                                      {{/data}}
+                                                    </script>
+                                                  </div>
+                                                </datalist>
+                                              </div>
                                               <p id="color-result"></p>
                                               <!-- depois fazer uma condição para a borda ficar em vermelho caso o que esteja digitado não seja uma categoria valida entre as possíveis -->
                                              
@@ -704,7 +714,7 @@
                                     
                                         <div class="form-group">
                                             <label>Imagem 1 (Capa) (500x625)</label>
-                                            <input type="file" id="imagem1" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem1" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -714,7 +724,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 2 (500x625)</label>
-                                            <input type="file" id="imagem2" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem2" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -724,7 +734,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 3 (500x625)</label>
-                                            <input type="file" id="imagem3" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem3" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -734,7 +744,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 4 (500x625)</label>
-                                            <input type="file" id="imagem4" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem4" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">
@@ -744,7 +754,7 @@
                                           </div>
                                           <div class="form-group">
                                             <label>Imagem 5 (500x625)</label>
-                                            <input type="file" id="imagem5" name="img[]" class="file-upload-default">
+                                            <input type="file" id="imagem5" name="img[]" class="file-upload-default" accept=".jpg, .jpeg, .png">
                                             <div class="input-group col-xs-12">
                                               <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
                                               <span class="input-group-append">

@@ -42,4 +42,5 @@ function cadastrar() {
 function fechar() {
     html = document.querySelector("*")
     html.removeChild(document.querySelector('.confirm-div'))
+    window.location.reload()
 }
