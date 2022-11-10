@@ -14,12 +14,38 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+  <!-- my-css -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
   <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
+  <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/vertical-layout-light/style.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
+
+  <style>                       /* estilizações que tive que modificar/corrigir */
+    .col-sm-9 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #textarea-observação {
+        padding-bottom: 70px;
+    }
+
+    #result {
+      width: 100%;
+    }
+
+    #result-produtos {
+      width: 100%;
+    }
+  </style>
 </head>
 
 <body>
@@ -371,6 +397,14 @@
       <!-- partial:../../partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
+          
+
+
+
+
+          
+          <!-- MEU PROJETO -->
+          
           <li class="nav-item nav-category">Relatórios</li>
         
           <li class="nav-item">
@@ -386,85 +420,84 @@
               </ul>
             </div>
           </li>
-          
-          <li class="nav-item nav-category">aplicações</li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
-              <i class="menu-icon mdi mdi-account-plus"></i>
-              <span class="menu-title">Representante</span>
-              <!-- <i class="menu-arrow"></i>  -->
-            </a>
-          </li>
-
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-clientes" aria-expanded="false" aria-controls="clientes">
-              <i class="menu-icon mdi mdi-account-multiple-plus"></i>
-              <span class="menu-title">Clientes</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="informacao-geral-clientes">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-cliente/cadastro-de-cliente.html">Cadastro de Cliente</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/clientes/clientes.html">Clientes</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-categorias" aria-expanded="false" aria-controls="categorias">
-              <i class="menu-icon mdi mdi-animation"></i>
-              <span class="menu-title">Categorias</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="informacao-geral-categorias">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-categoria/cadastro-de-categoria.html">Cadastro de Categoria</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/caregorias/categorias.html">Categorias</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-produtos" aria-expanded="false" aria-controls="produtos">
-              <i class="menu-icon mdi mdi-amplifier"></i>
-              <span class="menu-title">Produtos</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="informacao-geral-produtos">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-produtos/cadastro-de-produtos.html">Cadastro de Produto</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/produtos/produtos.html">Produtos</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-links" aria-expanded="false" aria-controls="link-pagamento">
-              <i class="menu-icon mdi mdi-calendar-text"></i>
-              <span class="menu-title">Link Pagamento</span>
-              <i class="menu-arrow"></i> 
-            </a>
-            <div class="collapse" id="informacao-geral-links">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-links/cadastro-de-links.html">Cadastro de Link</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../pages/links/links.html">Links</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="../../pages/vendas/vendas.html" aria-expanded="false" aria-controls="vendas"> <!-- Inserir o link nesse href -->
-              <i class="menu-icon mdi mdi-cash-multiple"></i>
-              <span class="menu-title">Vendas</span>
-              <!-- <i class="menu-arrow"></i>  -->
-            </a>
-          </li>
-
-          <li class="nav-item nav-category">site</li>
-
-          <li class="nav-item">
+           <li class="nav-item nav-category">aplicações</li>
+ 
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="../../pages/representantes/representantes.html" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
+               <i class="menu-icon mdi mdi-account-plus"></i>
+               <span class="menu-title">Representante</span>
+               <!-- <i class="menu-arrow"></i>  -->
+             </a>
+           </li>
+ 
+ 
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-clientes" aria-expanded="false" aria-controls="clientes">
+               <i class="menu-icon mdi mdi-account-multiple-plus"></i>
+               <span class="menu-title">Clientes</span>
+               <i class="menu-arrow"></i> 
+             </a>
+             <div class="collapse" id="informacao-geral-clientes">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-cliente/cadastro-de-cliente.html">Cadastro de Cliente</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/clientes/clientes.html">Clientes</a></li>
+               </ul>
+             </div>
+           </li>
+ 
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-categorias" aria-expanded="false" aria-controls="categorias">
+               <i class="menu-icon mdi mdi-animation"></i>
+               <span class="menu-title">Categorias</span>
+               <i class="menu-arrow"></i> 
+             </a>
+             <div class="collapse" id="informacao-geral-categorias">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-categoria/cadastro-de-categoria.html">Cadastro de Categoria</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/caregorias/categorias.html">Categorias</a></li>
+               </ul>
+             </div>
+           </li>
+ 
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-produtos" aria-expanded="false" aria-controls="produtos">
+               <i class="menu-icon mdi mdi-amplifier"></i>
+               <span class="menu-title">Produtos</span>
+               <i class="menu-arrow"></i> 
+             </a>
+             <div class="collapse" id="informacao-geral-produtos">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-produtos/cadastro-de-produtos.html">Cadastro de Produto</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/produtos/produtos.html">Produtos</a></li>
+               </ul>
+             </div>
+           </li>
+ 
+           <li class="nav-item">
+             <a class="nav-link" data-bs-toggle="collapse" href="#informacao-geral-links" aria-expanded="false" aria-controls="link-pagamento">
+               <i class="menu-icon mdi mdi-calendar-text"></i>
+               <span class="menu-title">Link Pagamento</span>
+               <i class="menu-arrow"></i> 
+             </a>
+             <div class="collapse" id="informacao-geral-links">
+               <ul class="nav flex-column sub-menu">
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/cadastro-de-links/cadastro-de-links.html">Cadastro de Link</a></li>
+                 <li class="nav-item"> <a class="nav-link" href="../../pages/links/links.html">Links</a></li>
+               </ul>
+             </div>
+           </li>
+ 
+           <li class="nav-item">
+             <a class="nav-link" href="../../pages/vendas/vendas.html" aria-expanded="false" aria-controls="vendas"> <!-- Inserir o link nesse href -->
+               <i class="menu-icon mdi mdi-cash-multiple"></i>
+               <span class="menu-title">Vendas</span>
+               <!-- <i class="menu-arrow"></i>  -->
+             </a>
+           </li>
+ 
+           <li class="nav-item nav-category">site</li>
+ 
+           <li class="nav-item">
             <a class="nav-link" href="../../pages/cadastro-de-contatos/cadastro-de-contatos.html" aria-expanded="false" aria-controls="contatos"> <!-- Inserir o link nesse href -->
               <i class="menu-icon mdi mdi-account-card-details"></i>
               <span class="menu-title">Contatos</span>
@@ -510,107 +543,136 @@
               <!-- <i class="menu-arrow"></i>  -->
             </a>
           </li>
-
-        </ul>
+ 
+         </ul>
       </nav>
+
+
+
       <!-- partial -->
+        <div class="main-panel">        
+            <div class="content-wrapper">
+                <div class="row">
+                    <!-- CADASTRO DE CLIENTE -->
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                          <div class="card-body">
+                            <h4 class="card-title">Cadastro de Links</h4>
+                            
+                            <p class="card-description">
+                              Realize o cadastro do link dos seus clientes e já mandem pra eles!
+                            </p>
+                            <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group row">
+                                  <label class="col-sm-3 col-form-label">Nome</label>
+                                  <div class="col-sm-9">
+                                    <input type="text" id="nome" class="form-control" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Quantidade de Clientes</label>
+                                    <div class="col-sm-9">
+                                      <input type="number" id="quantidadeClientes" class="form-control" placeholder="0"/>
+                                    </div>
+                                  </div>
+                                  <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Comissão</label>
+                                    <div class="col-sm-9">
+                                      <input type="number" id="comissao" class="form-control" placeholder="0%"/>
+                                    </div>
+                                  </div>
+                                </div>
+                              
+                            </div>
 
-      
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="row">
-            <div class="col-lg-12 stretch-card">
+                            <button class="btn btn-primary me-2" onclick="cadastrar()" style="margin-top: 30px;">Cadastrar</button>
+                            <div class="table-responsive pt-3">
+                              <div id="result-representante" >
+                                <script id="template-representante" type="x-tmpl-mustache">
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>
+                                          Nome
+                                        </th>
+                                        <th>
+                                          Quantidade de Clientes
+                                        </th>
+                                        <th>
+                                          Comissão
+                                        </th>
+                                        <th>
+                                          Ação
+                                        </th>
+                                      </tr>
+                                    </thead>
 
-              <!-- CARD -->
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Listagem de vendas</h4>
-                  <p class="card-description">
-                    Add class <code>.table-{color}</code> <strong> cada cor tem um significado</strong>
-                  </p>
-                  <div class="table-responsive pt-3">
-                    <div id="result-links">
-                      <script id="template-links" type="x-tmpl-mustache">
-                        <table class="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th>
-                                Cliente
-                              </th>
-                              <th>
-                                Representante
-                              </th>
-                              <th>
-                                Valor
-                              </th>
-                              <th>
-                                Comissão
-                              </th>
-                              <th>
-                                Data/Hora
-                              </th>
-                              <th>
-                                Status
-                              </th>
-                              <th>
-                                Ação
-                              </th>
-                            </tr>
-                          </thead>
-
-                          {{#data}}
-                            <tbody>
-                              <tr class="table-primary">
-                                <td>
-                                  {{cliente.nome}}
-                                </td>
-                                <td>
-                                  {{valor_total}}
-                                </td>
-                                <td>
-                                  {{comissao}}
-                                </td>
-                                <td>
-                                  {{createdAt}}
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                  ação
-                                </td>
-                              </tr>
-                            </tbody>
-                          {{/data}}
-                        </table>
-                      </script>
-                    </div>
-                  </div>
+                                    {{#data}}
+                                      <tbody>                                    
+                                        <tr class="table-primary">
+                                          <td>
+                                            {{nome}}
+                                          </td>
+                                          <td>
+                                            {{qnt_clientes}}
+                                          </td>
+                                          <td>
+                                            {{comissao}}
+                                          </td>
+                                          <td>
+                                            ação
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    {{/data}}
+                                  </table>
+                                </script>
+                              </div>
+                            </div>
+                            
+                          
+                          </div>
+                        </div>
+                      </div>
                 </div>
-              </div>
             </div>
 
-          </div>
+            <footer class="footer">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
+              </div>
+            </footer>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
-          </div>
-        </footer>
-        <!-- partial -->
+
       </div>
       <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/representantes-handle.js"></script>
+
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
+  <script src="../../vendors/typeahead.js/typeahead.bundle.min.js"></script>
+  <script src="../../vendors/select2/select2.min.js"></script>
   <script src="../../vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
@@ -621,6 +683,9 @@
   <script src="../../js/todolist.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
+  <script src="../../js/file-upload.js"></script>
+  <script src="../../js/typeahead.js"></script>
+  <script src="../../js/select2.js"></script>
   <!-- End custom js for this page-->
 </body>
 
