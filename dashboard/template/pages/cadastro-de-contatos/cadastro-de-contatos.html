@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+ <!-- my-css -->
+ <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
+
+
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
   <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -542,57 +548,84 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Cliente Cadastro</h4>
-                                <form class="form-sample">
-                                    <p class="card-description">
-                                    Realize o cadastro das suas informações de contato.
-                                    </p>
+                                <h4 class="card-title">Contato Cadastro</h4>
+                                
+                                <p class="card-description">
+                                Realize o cadastro das suas informações de contato.
+                                </p>
 
-                                    <!-- ENDEREÇO -->
-                                    <div class="row">
+                                <!-- ENDEREÇO -->
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Endereço</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="endereco" class="form-control" />
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <!-- SITE -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Site</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="site" class="form-control"/>
+                                    </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- EMAIL -->
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Endereço</label>
+                                        <label class="col-sm-3 col-form-label">E-mail</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" />
+                                            <input type="text" id="email" class="form-control" />
                                         </div>
                                         </div>
                                     </div>
+                                    
+                                <!-- WHATSAPP -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Whatsapp</label>
+                                    <div class="col-sm-9">
+                                        <input type="tel" id="whatsapp" class="form-control" required placeholder="(xx) xxxxx-xxxx">
+                                    </div>
+                                    <script>
+                                        const inputWpp = document.getElementById("whatsapp");
 
-                                    <!-- SITE -->
+                                        inputWpp.addEventListener("keyup", formatarTelefone);
+
+                                        function formatarTelefone(e) {
+                                            var v = e.target.value.replace(/\D/g,"")
+
+                                            v = v.replace(/^(\d\d)(\d)/g,"($1)$2")
+
+                                            v = v.replace(/(\d{5})(\d)/,"$1-$2") 
+
+                                            e.target.value = v
+                                        }
+                                    </script>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <!-- CELULAR -->
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Site</label>
+                                        <label class="col-sm-3 col-form-label">Celular</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control"/>
-                                        </div>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- EMAIL -->
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">E-mail</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" />
-                                            </div>
-                                            </div>
-                                        </div>
-                                        
-                                    <!-- WHATSAPP -->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Whatsapp</label>
-                                        <div class="col-sm-9">
-                                            <input type="tel" id="whatsapp" class="form-control" required placeholder="(xx) xxxxx-xxxx">
+                                            <input type="tel" id="celular" class="form-control" required placeholder="(xx) xxxxx-xxxx">
                                         </div>
                                         <script>
-                                            const inputWpp = document.getElementById("whatsapp");
+                                            const inputCel = document.getElementById("celular");
 
-                                            inputWpp.addEventListener("keyup", formatarTelefone);
+                                            inputCel.addEventListener("keyup", formatarTelefone);
 
                                             function formatarTelefone(e) {
                                                 var v = e.target.value.replace(/\D/g,"")
@@ -604,60 +637,100 @@
                                                 e.target.value = v
                                             }
                                         </script>
-                                        </div>
                                     </div>
-                                    </div>
+                                </div>
 
-                                    <!-- CELULAR -->
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Celular</label>
-                                            <div class="col-sm-9">
-                                                <input type="tel" id="celular" class="form-control" required placeholder="(xx) xxxxx-xxxx">
-                                            </div>
-                                            <script>
-                                                const inputCel = document.getElementById("celular");
-    
-                                                inputCel.addEventListener("keyup", formatarTelefone);
-    
-                                                function formatarTelefone(e) {
-                                                    var v = e.target.value.replace(/\D/g,"")
-    
-                                                    v = v.replace(/^(\d\d)(\d)/g,"($1)$2")
-    
-                                                    v = v.replace(/(\d{5})(\d)/,"$1-$2") 
-    
-                                                    e.target.value = v
-                                                }
-                                            </script>
-                                        </div>
-                                    </div>
-
-                                    <!-- GEO LOCAIZAÇÃO -->
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                            <label class="col-sm-3 col-form-label">Geo Localização</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-
-                                    <!-- OBSERVAÇÃO -->
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group row">
-                                        <label class="col-sm-3 col-form-label">Observação</label>
+                                <!-- GEO LOCAIZAÇÃO -->
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Geo Localização</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" />
+                                            <input type="text" id="geoLocalizacao" class="form-control" >
                                         </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary me-2">Salvar</button>
                                     </div>
+                                </div>
+                                </div>
 
-                                </form>
+                                <!-- OBSERVAÇÃO -->
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Observação</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" id="observacao" class="form-control" />
+                                    </div>
+                                    </div>
+                                    <button onclick="salvar()" class="btn btn-primary me-2">Salvar</button>
+                                </div>
+
+                                <div class="table-responsive pt-3">
+                                  <div id="result-contatos" >
+                                    <script id="template-contatos" type="x-tmpl-mustache">
+                                      <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th>
+                                              Endereço
+                                            </th>
+                                            <th>
+                                              E-mail
+                                            </th>
+                                            <th>
+                                              Celular
+                                            </th>
+                                            <th>
+                                              Observação
+                                            </th>
+                                            <th>
+                                              Site
+                                            </th>
+                                            <th>
+                                              Whatsapp
+                                            </th>
+                                            <th>
+                                              Geo Localização
+                                            </th>
+                                            <th>
+                                              Ação
+                                            </th>
+                                          </tr>
+                                        </thead>
+    
+                                        {{#data}}
+                                          <tbody>                                    
+                                            <tr class="table-primary">
+                                              <td>
+                                                {{endereco}}
+                                              </td>
+                                              <td>
+                                                {{email}}
+                                              </td>
+                                              <td>
+                                                {{celular}}
+                                              </td>
+                                              <td>
+                                                {{observacao}}
+                                              </td>
+                                              <td>
+                                                {{site}}
+                                              </td>
+                                              <td>
+                                                {{whatsapp}}
+                                              </td>
+                                              <td>
+                                                {{geo_localizacao}}
+                                              </td>
+                                              <td>
+                                                ação
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        {{/data}}
+                                      </table>
+                                    </script>
+                                  </div>
+                                </div>
+                               
                             </div>
                         </div>
                     </div>
@@ -677,6 +750,16 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/contato-handle.js"></script>
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

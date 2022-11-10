@@ -14,6 +14,11 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+ <!-- my-css -->
+ <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
+
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
   <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -25,13 +30,13 @@
 
   <style>                       /* estilizações que tive que modificar/corrigir */
     .col-sm-9 {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    #text-area {
-        padding-bottom: 30px;
+    .text-area {
+      padding-bottom: 30px;
     }
   </style>
 </head>
@@ -547,7 +552,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Cadastro de Informações</h4>
-                                <form class="form-sample">
                                     <p class="card-description">
                                     Realize o cadastro das suas informações.
                                     </p>
@@ -558,7 +562,7 @@
                                             <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Descrição</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control"  id="text-area" cols="30" rows="10"></textarea>
+                                                <textarea class="form-control text-area"  id="descricao" cols="30" rows="10"></textarea>
                                             </div>
                                             </div>
                                         </div>
@@ -568,7 +572,7 @@
                                             <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Visão</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" cols="30" id="text-area" rows="10"></textarea>
+                                                <textarea class="form-control text-area" cols="30" id="visao" rows="10"></textarea>
                                             </div>
                                             </div>
 
@@ -579,16 +583,56 @@
                                             <div class="form-group row">
                                                 <label class="col-sm-3 col-form-label">Missão</label>
                                                 <div class="col-sm-9">
-                                                    <textarea class="form-control" id="text-area" cols="30" rows="10"></textarea>
+                                                    <textarea class="form-control text-area" id="missao" cols="30" rows="10"></textarea>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="btn btn-primary me-2">Salvar</button>
+                                            <button onclick="salvar()" class="btn btn-primary me-2">Salvar</button>
                                         </div>
                                     
                                     </div>
-                                    
-                                   
-                                </form>
+                                    <div class="table-responsive pt-3">
+                                      <div id="result-infos" >
+                                        <script id="template-infos" type="x-tmpl-mustache">
+                                          <table class="table table-bordered">
+                                            <thead>
+                                              <tr>
+                                                <th>
+                                                  Descrição
+                                                </th>
+                                                <th>
+                                                  Visão
+                                                </th>
+                                                <th>
+                                                  Missão
+                                                </th>
+                                                <th>
+                                                  Ação
+                                                </th>
+                                              </tr>
+                                            </thead>
+        
+                                            {{#data}}
+                                              <tbody>                                    
+                                                <tr class="table-primary">
+                                                  <td>
+                                                    {{descricao}}
+                                                  </td>
+                                                  <td>
+                                                    {{visao}}
+                                                  </td>
+                                                  <td>
+                                                    {{missao}}
+                                                  </td>
+                                                  <td>
+                                                    ação
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            {{/data}}
+                                          </table>
+                                        </script>
+                                      </div>
+                                    </div>
                             </div>
                         </div>
                     </div>
@@ -608,6 +652,18 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/info-handle.js"></script>
+
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

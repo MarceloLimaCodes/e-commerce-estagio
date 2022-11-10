@@ -529,8 +529,8 @@
                     Add class <code>.table-{color}</code> <strong> cada cor tem um significado</strong>
                   </p>
                   <div class="table-responsive pt-3">
-                    <div id="result-links">
-                      <script id="template-links" type="x-tmpl-mustache">
+                    <div id="result-vendas">
+                      <script id="template-vendas" type="x-tmpl-mustache">
                         <table class="table table-bordered">
                           <thead>
                             <tr>
@@ -565,7 +565,10 @@
                                   {{cliente.nome}}
                                 </td>
                                 <td>
-                                  {{valor_total}}
+                                  {{representante.nome}}
+                                </td>
+                                <td>
+                                  {{valor}}
                                 </td>
                                 <td>
                                   {{comissao}}
@@ -574,7 +577,7 @@
                                   {{createdAt}}
                                 </td>
                                 <td>
-
+                                  {{status}}
                                 </td>
                                 <td>
                                   ação
@@ -606,6 +609,16 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all vendas) -->
+  <script src="../../js/my-js/venda-handle.js"></script>
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

@@ -7,6 +7,8 @@ const Produto = require('../models/Produto')
 const Representante = require('../models/Representante')
 const Link = require('../models/Link')
 const Venda = require('../models/Venda')
+const Contato = require('../models/Contato')
+const Info = require('../models/Info')
 
 const connection = new Sequelize(dbConfig)
 
@@ -16,7 +18,8 @@ Categoria.init(connection)
 Representante.init(connection)
 Link.init(connection)
 Venda.init(connection)
-
+Contato.init(connection)
+Info.init(connection)
 
 Produto.associate(connection.models)
 Link.associate(connection.models)
