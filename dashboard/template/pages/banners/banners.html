@@ -396,7 +396,7 @@
             <li class="nav-item nav-category">aplicações</li>
   
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
+              <a class="nav-link" data-bs-toggle="collapse" href="../../pages/representantes/representantes.html" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
                 <i class="menu-icon mdi mdi-account-plus"></i>
                 <span class="menu-title">Representante</span>
                 <!-- <i class="menu-arrow"></i>  -->
@@ -535,103 +535,41 @@
                     Add class <code>.table-{color}</code> <strong> cada cor tem um significado</strong>
                   </p>
                   <div class="table-responsive pt-3">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th>
-                            Imagem
-                          </th>
-                          <th>
-                            Status
-                          </th>
-                          <th>
-                            Observação
-                          </th>
-                          <th>
-                            Ação
-                          </th>
-                          
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr class="table-info">
-                          <td>
-                            Herman Beck
-                          </td>
-                          <td>
-                            999.999.999-99
-                          </td>
-                          <td>
-                            teste@teste.com
-                          </td>
-                          <td>
-                            (xx) xxxxx-xxxx
-                          </td>
-                          
-                        </tr>
-                        <tr class="table-warning">
-                          <td>
-                            Messsy Adam
-                          </td>
-                          <td>
-                            999.999.999-99
-                          </td>
-                          <td>
-                            teste@teste.com
-                          </td>
-                          <td>
-                            (xx) xxxxx-xxxx
-                          </td>
-                         
-                        </tr>
-                        <tr class="table-danger">
-                          <td>
-                            John Richards
-                          </td>
-                          <td>
-                            999.999.999-99
-                          </td>
-                          <td>
-                            teste@teste.com
-                          </td>
-                          <td>
-                            (xx) xxxxx-xxxx
-                          </td>
-                         
-                        </tr>
-                        <tr class="table-success">
-                          <td>
-                            Peter Meggik
-                          </td>
-                          <td>
-                            999.999.999-99
-                          </td>
-                          <td>
-                            teste@teste.com
-                          </td>
-                          <td>
-                            (xx) xxxxx-xxxx
-                          </td>
-                         
-                        </tr>
-                        <tr class="table-primary">
-                          <td>
-                            Edward
-                          </td>
-                          <td>
-                            999.999.999-99
-                          </td>
-                          <td>
-                            teste@teste.com
-                          </td>
-                          <td>
-                            (xx) xxxxx-xxxx
-                          </td>
-                          
-                       
-                        </tr>
-                      </tbody>
-                    </table>
+                    <div id="result-banners" >
+                      <script id="template-banners" type="x-tmpl-mustache">
+                        <table class="table table-bordered">
+                          <thead>
+                            <tr>
+                              <th>
+                                Imagem
+                              </th>
+                              <th>
+                                Observação
+                              </th>
+                              <th>
+                                Ação
+                              </th>
+                            </tr>
+                          </thead>
+
+                          {{#data}}
+                            <tbody>                                    
+                              <tr class="table-primary">
+                                <td>
+                                  <img src="{{imagem}}" alt="">
+                                </td>
+                                <td>
+                                  {{observacao}}
+                                </td>
+                                <td>
+                                  ação
+                                </td>
+                              </tr>
+                            </tbody>
+                          {{/data}}
+                        </table>
+                      </script>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -653,6 +591,17 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/banner-listagem.js"></script>
+
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

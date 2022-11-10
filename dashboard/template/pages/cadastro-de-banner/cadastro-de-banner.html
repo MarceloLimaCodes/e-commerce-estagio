@@ -14,6 +14,12 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+
+  <!-- my-css -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
+
   <!-- Plugin css for this page -->
   <link rel="stylesheet" href="../../vendors/select2/select2.min.css">
   <link rel="stylesheet" href="../../vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
@@ -30,7 +36,7 @@
         justify-content: center;
     }
 
-    #text-area {
+    .text-area {
         padding-bottom: 30px;
     }
 
@@ -414,7 +420,7 @@
             <li class="nav-item nav-category">aplicações</li>
   
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
+              <a class="nav-link" data-bs-toggle="collapse" href="../../pages/representantes/representantes.html" aria-expanded="false" aria-controls="representante"> <!-- Inserir o link nesse href -->
                 <i class="menu-icon mdi mdi-account-plus"></i>
                 <span class="menu-title">Representante</span>
                 <!-- <i class="menu-arrow"></i>  -->
@@ -553,25 +559,23 @@
                             <p class="card-description">
                               Realize o cadastro de seus banners, é muito importante que você coloque a imagem
                             </p>
-                            <form class="forms-sample">
                                 
-                                <div class="form-group">
-                                    <label>Imagem (1432x560)</label>
-                                    <input type="file" name="img[]" class="file-upload-default">
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary btn-sm" type="button">Upload</button>
-                                        </span>
-                                    </div>
-                                    
-                                <div class="form-group">
-                                    <label id="text-area-label" for="text-area">Observação</label>
-                                    <textarea name="" class="form-control" id="text-area" cols="30" rows="10"></textarea>
+                            <div class="form-group">
+                                <label>Imagem (1432x560)</label>
+                                <input type="file" name="img[]" class="file-upload-default">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" id="imagem" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary btn-sm" type="button">Upload</button>
+                                    </span>
                                 </div>
-                              <button type="submit" class="btn btn-primary me-2">Enviar</button>
+                                
+                            <div class="form-group">
+                                <label id="text-area-label" for="observacao">Observação</label>
+                                <textarea name="" class="form-control text-area" id="observacao" cols="30" rows="10"></textarea>
+                            </div>
+                            <button onclick="cadastrar()" class="btn btn-primary me-2">Enviar</button>
                               
-                            </form>
                           </div>
                         </div>
                       </div>
@@ -591,6 +595,17 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
+
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
+
+  <!-- clientes-listagem e MUSTACHE RENDER (get all clientes) -->
+  <script src="../../js/my-js/banner-handle.js"></script>
+
+
   <!-- container-scroller -->
   <!-- plugins:js -->
   <script src="../../vendors/js/vendor.bundle.base.js"></script>

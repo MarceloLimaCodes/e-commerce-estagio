@@ -8,6 +8,7 @@ const LinkController = require('./controllers/LinkController')
 const VendaController = require('./controllers/VendaController')
 const ContatoController = require('./controllers/ContatoController')
 const InfoController = require('./controllers/InfoController')
+const BannerController = require('./controllers/BannerController')
 
 const routes = express.Router()
 
@@ -65,5 +66,12 @@ routes.post('/infos/busca', InfoController.buscar)
 routes.post('/infos', InfoController.criar)
 routes.put('/infos/:id', InfoController.editar)
 routes.delete('/infos/:id', InfoController.deletar)
+
+// BANNER
+routes.get('/banners', BannerController.listar)
+routes.post('/banners/busca', BannerController.buscar)
+routes.post('/banners', BannerController.criar)
+routes.put('/banners/:id', BannerController.editar)
+routes.delete('/banners/:id', BannerController.deletar)
 
 module.exports = routes
