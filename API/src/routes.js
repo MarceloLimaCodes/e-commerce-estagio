@@ -9,6 +9,7 @@ const VendaController = require('./controllers/VendaController')
 const ContatoController = require('./controllers/ContatoController')
 const InfoController = require('./controllers/InfoController')
 const BannerController = require('./controllers/BannerController')
+const UserController = require('./controllers/UserController')
 
 const routes = express.Router()
 
@@ -73,5 +74,13 @@ routes.post('/banners/busca', BannerController.buscar)
 routes.post('/banners', BannerController.criar)
 routes.put('/banners/:id', BannerController.editar)
 routes.delete('/banners/:id', BannerController.deletar)
+
+// USUÁRIO
+routes.get('/users', UserController.listar)
+routes.post('/users/auth', UserController.autenticar)
+routes.post('/users/busca', UserController.buscar)
+routes.post('/registrar', UserController.criar)
+routes.put('/users/:id', UserController.editar)
+routes.delete('/users/:id', UserController.deletar)
 
 module.exports = routes

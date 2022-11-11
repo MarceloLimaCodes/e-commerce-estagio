@@ -1,10 +1,11 @@
 Tabela usuario
-	id			<= chave primária
+	id				<= chave primária
 	idColuna		<= chave estrangeira do fornecedor
-	nome			<= varchar
+	nome1			<= varchar
+	nome2			<= varchar
 	email			<= varchar
 	senha			<= varchar
-	cpf			<= char
+	cpf				<= char
 	foto-perfil		<= blob
 	permissão		<= boolean
 	ativo			<= boolean

@@ -10,9 +10,26 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>Free Snow Bootstrap Website Template | Register :: w3layouts</title>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- MEU CSS -->
+<link rel="stylesheet" href="./css/box-mensagem.css">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+<style>
+	.meu-input {
+		width: 96%;
+		padding: 7.5px;
+	}
+
+	.input-file {
+		width: 96%;
+	}
+</style>
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <script src="js/jquery.min.js"></script>
 <script type="text/javascript">
@@ -118,25 +135,49 @@ License URL: http://creativecommons.org/licenses/by/3.0/
      <div class="main">
       <div class="shop_top">
 	     <div class="container">
-						<form> 
+						
 								<div class="register-top-grid">
 										<h3>PERSONAL INFORMATION</h3>
 										<div>
 											<span>First Name<label>*</label></span>
-											<input type="text"> 
+											<input id="nome1" type="text"> 
 										</div>
 										<div>
 											<span>Last Name<label>*</label></span>
-											<input type="text"> 
+											<input id="nome2" type="text"> 
 										</div>
 										<div>
 											<span>Email Address<label>*</label></span>
-											<input type="text"> 
+											<input class="meu-input" id="email" type="text"> 
+											<span id="mail-valid"></span>
+										</div>
+										<div>
+											<span>CPF<label>*</label></span>
+											<input id="cpf" oninput="mascara(this)" type="text"> 
+										</div>
+										<script>
+                                            function mascara(i){
+                                                var v = i.value;
+                                                
+                                                if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+                                                    i.value = v.substring(0, v.length-1);
+                                                    return;
+                                                }
+                                                
+                                                i.setAttribute("maxlength", "14");
+                                                if (v.length == 3 || v.length == 7) i.value += ".";
+                                                if (v.length == 11) i.value += "-";
+
+                                                }
+                                        </script>
+										<div>
+											<span>Foto de perfil<label>*</label></span>
+											<input type="file" name="img[]" class="input-file" id="fotoPerfil" accept=".jpg, .jpeg, .png"> 
 										</div>
 										<div class="clear"> </div>
-											<a class="news-letter" href="#">
+											<!-- <a class="news-letter" href="#">
 												<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Sign Up for Newsletter</label>
-											</a>
+											</a> -->
 										<div class="clear"> </div>
 								</div>
 								<div class="clear"> </div>
@@ -144,17 +185,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<h3>LOGIN INFORMATION</h3>
 										<div>
 											<span>Password<label>*</label></span>
-											<input type="text">
+											<input id="password" class="meu-input" type="password">
 										</div>
 										<div>
 											<span>Confirm Password<label>*</label></span>
-											<input type="text">
+											<input id="confirmSenha" class="meu-input" type="password">
+											<span id="confirm-valid"></span>
 										</div>
 										<div class="clear"> </div>
 								</div>
 								<div class="clear"> </div>
-								<input type="submit" value="submit">
-						</form>
+								<input onclick="cadastrar()" type="button" value="Cadastrar">
+						
 					</div>
 		   </div>
 	  </div>
@@ -227,5 +269,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    				</div>
 			</div>
 		</div>
+
+
+	<!-- AXIOS CDN -->
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+	<!-- MUSTACHE -->
+	<script src="https://unpkg.com/mustache@latest"></script>
+
+	<!-- MEU JAVASCRIPT -->
+	<script src="./js/my-js/registro-handle.js" ></script>
 </body>	
 </html>
