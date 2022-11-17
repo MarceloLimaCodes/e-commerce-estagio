@@ -10,6 +10,7 @@ const ContatoController = require('./controllers/ContatoController')
 const InfoController = require('./controllers/InfoController')
 const BannerController = require('./controllers/BannerController')
 const UserController = require('./controllers/UserController')
+const CarrinhoController = require('./controllers/CarrinhoController')
 
 const routes = express.Router()
 
@@ -82,5 +83,12 @@ routes.post('/users/busca', UserController.buscar)
 routes.post('/registrar', UserController.criar)
 routes.put('/users/:id', UserController.editar)
 routes.delete('/users/:id', UserController.deletar)
+
+// CARRINHO
+routes.get('/carrinho', CarrinhoController.listar)
+routes.post('/carrinho/busca', CarrinhoController.buscarUm)
+routes.post('/carrinho', CarrinhoController.criar)
+routes.put('/carrinho/:id', CarrinhoController.editar)
+routes.delete('/carrinho/:id', CarrinhoController.deletar)
 
 module.exports = routes

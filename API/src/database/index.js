@@ -11,6 +11,7 @@ const Contato = require('../models/Contato')
 const Info = require('../models/Info')
 const Banner = require('../models/Banner')
 const User = require('../models/User')
+const Carrinho = require('../models/Carrinho')
 
 const connection = new Sequelize(dbConfig)
 
@@ -24,10 +25,12 @@ Contato.init(connection)
 Info.init(connection)
 Banner.init(connection)
 User.init(connection)
+Carrinho.init(connection)
 
 Produto.associate(connection.models)
 Link.associate(connection.models)
 Venda.associate(connection.models)
 User.associate(connection.models)
+Carrinho.associate(connection.models)
 
 module.exports = connection
