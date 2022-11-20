@@ -34,6 +34,8 @@ module.exports = {
                 quantidade 
             })
 
+            await link.save()
+            
             return res.json(link)
 
         } catch (error) {

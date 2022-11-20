@@ -87,6 +87,8 @@ module.exports = {
             user.permissao = permissao ? permissao : user.permissao
             user.ativo = ativo ? ativo : user.ativo
 
+            await user.save()
+
             return res.json(user)
             
         } catch (error) {

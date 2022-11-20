@@ -56,6 +56,8 @@ module.exports = {
             
             carrinho.quantidade = quantidade ? quantidade : carrinho.quantidade
             carrinho.valor_total = valor_total ? valor_total : carrinho.valor_total
+
+            await carrinho.save()
     
             return res.json(carrinho)
             
@@ -85,7 +87,7 @@ module.exports = {
         try {
             const { user_id } = req.body
             
-            const carrinho = await Carrinho.findOne({
+            const carrinho = await Carrinho.findAll({
                 where: { user_id }, 
                 include: [{ association: 'user' }, { association: 'produto' }]
             })
@@ -94,8 +96,6 @@ module.exports = {
                 return res.status(400).json({ error: 'Carrinho não encontrado' })
             }
             
-            carrinho.user.password = undefined
-
             return res.json(carrinho)
             
         } catch (error) {

@@ -51,6 +51,8 @@ module.exports = {
             cliente.numero = numero ? numero : cliente.numero
             cliente.cidade = cidade ? cidade : cliente.cidade
             cliente.observacao = observacao ? observacao : cliente.observacao
+
+            await cliente.save()
     
             return res.json(cliente)
             

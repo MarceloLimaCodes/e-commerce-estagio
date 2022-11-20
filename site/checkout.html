@@ -8,6 +8,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html lang="pt-br">
 <head>
 <title>Free Snow Bootstrap Website Template | Checkout :: w3layouts</title>
+
+<!-- MEU CSS -->
+<link rel="stylesheet" href="./css/box-mensagem.css">
+
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <link href="css/style.css" rel='stylesheet' type='text/css' />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -46,10 +50,72 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             });
         });
      </script>
- </head>
-<body>
+	 <style>
+		.remove-button {
+			padding: 1.5px 8px;
+		}
 
-	
+		.botoes {
+			margin-left: 100px;
+		}
+
+		.produtos-container {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		thead,
+		tfoot {
+			background-color: black;
+			color: #fff;
+		}
+
+		tbody {
+			background-color: white;
+		}
+
+		caption {
+			padding: 10px;
+			caption-side: bottom;
+		}
+
+		table {
+			border-collapse: collapse;
+			border: 2px solid black;
+			letter-spacing: 1px;
+			font-family: sans-serif;
+			font-size: .8rem;
+		}
+
+		td,
+		th {
+			border: 1px solid black;
+			padding: 5px 10px;
+		}
+
+		td {
+			text-align: center;
+		}
+
+		#result-carrinho {
+			display: none;
+		}
+
+		#carrinho-vazio {
+			display: none;
+		}
+
+		#carrinho-vazio-mensagem {
+			display: none;
+		}
+
+		.my-button-a {
+			cursor: pointer;
+		}
+	 </style>
+ </head>
+<body onload="getCarrinho()">
 	<div class="header">
 		<div class="container">
 			<div class="row">
@@ -117,11 +183,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		 </div>
 	    </div>
 	  </div>
-     <div class="main">
+     <div id="main" class="main">
       <div class="shop_top">
 		<div class="container">
-			<h4 class="title">Shopping cart is empty</h4>
-			<p class="cart">You have no items in your shopping cart.<br>Click<a href="index.html"> here</a> to continue shopping</p>
+
+			<div class="produtos-container">
+				<div id="result-carrinho">
+					<script id="template-carrinho" type="x-tmpl-mustache">
+						<table>
+							<thead>
+								<th>Produtos</th>
+								<th>Quantidade</th>
+								<th>Valor total</th>
+								<th>Adicionar/Remover</th>
+								<th>Retirar do Carrinho</th>
+							</thead>
+							<tbody>
+								{{#data}}
+									<tr>
+										<td>{{produto.nome}}</td>
+										<td>{{quantidade}}</td>
+										<td>{{valor_total}}</td>
+										<td>
+											<button onclick="addButton({{id}}, {{quantidade}})">+</button>
+											<button onclick="removeButton({{id}}, {{quantidade}})" class="remove-button">-</button>
+										</td>
+										<td>
+											<button onclick="removeCart({{id}})">x</button>
+										</td>
+									</tr>
+								{{/data}}
+							</tbody>
+						</table>
+					</script>
+				</div>
+			</div>
+
+			<h4 id="carrinho-vazio" class="title">Shopping cart is empty</h4>
+			<p id="carrinho-vazio-mensagem" class="cart">You have no items in your shopping cart.<br>Click<a href="index.html"> here</a> to continue shopping</p>
 	     </div>
 	   </div>
 	  </div>
@@ -194,5 +293,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    				</div>
 			</div>
 		</div>
+
+
+<!-- MUSTACHE -->
+<script src="https://unpkg.com/mustache@latest"></script>
+
+<!-- AXIOS -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- MEU-JS -->
+<script src="./js/my-js/produto-handle.js"></script>
 </body>	
 </html>

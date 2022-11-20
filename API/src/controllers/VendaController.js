@@ -63,6 +63,8 @@ module.exports = {
             venda.valor = valor ? valor : venda.valor
             venda.comissao = comissao ? comissao : venda.comissao
             venda.status = status ? status : venda.status
+
+            await venda.save()
     
             return res.json(venda)
             

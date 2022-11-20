@@ -209,42 +209,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							</ul>
 							<div class="btn_form">
 								<input type="button" class="my-button" onclick="validarLogin()" value="buy now" title="">
-
-								<script>
-									function validarLogin() {
-										let token = localStorage.getItem("token")
-												
-										if(!token) {
-											let html = document.querySelector("*")
-
-											let confirmDiv = document.createElement('div')
-											confirmDiv.classList.add("confirm-div")
-
-											let confirmBox = document.createElement('div')
-											confirmBox.classList.add("confirm-box")
-											
-											html.appendChild(confirmDiv)
-											
-											confirmBox.innerHTML = `
-											<button id="close-button" onclick="fechar()">x</button><br>
-
-											<p>Não tem uma conta?</p> <hr>
-												<a class="my-button-a" href="./login.html" target="_blank">Entrar</a> ou
-												<a class="my-button-a" href="./register.html" target="_blank">Registrar</a> <br>
-												
-											`
-												
-											confirmDiv.appendChild(confirmBox)
-										}
-									}
-
-									function fechar() {
-										html = document.querySelector("*")
-										html.removeChild(document.querySelector('.confirm-div'))
-									}
-								</script>
-
-
 							</div>
 
 							<ul class="add-to-links">
@@ -409,5 +373,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    				</div>
 			</div>
 		</div>
+<!-- AXIOS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script src="./js/my-js/produto-handle.js"></script>
 </body>	
 </html>

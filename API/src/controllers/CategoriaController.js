@@ -41,6 +41,8 @@ module.exports = {
             
             categoria.nome = nome ? nome : categoria.nome
             categoria.observacao = observacao ? observacao : categoria.observacao
+
+            await categoria.save()
     
             return res.json(categoria)
             

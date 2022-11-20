@@ -70,7 +70,9 @@ module.exports = {
             contato.site = site ? site : contato.site
             contato.whatsapp = whatsapp ? whatsapp : contato.whatsapp
             contato.geo_localizacao = geo_localizacao ? geo_localizacao : contato.geo_localizacao
-    
+
+            await contato.save()
+
             return res.json(contato)
             
         } catch (error) {

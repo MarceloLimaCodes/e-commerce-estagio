@@ -42,7 +42,9 @@ module.exports = {
             representante.nome = nome ? nome : representante.nome
             representante.qnt_clientes = qnt_clientes ? qnt_clientes : representante.qnt_clientes
             representante.comissao = comissao ? comissao : representante.comissao
-    
+            
+            await representante.save()
+
             return res.json(representante)
             
         } catch (error) {

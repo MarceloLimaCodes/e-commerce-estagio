@@ -54,6 +54,8 @@ module.exports = {
             info.descricao = descricao ? descricao : info.descricao
             info.missao = missao ? missao : info.missao
             info.visao = visao ? visao : info.visao
+
+            await info.save()
     
             return res.json(info)
             

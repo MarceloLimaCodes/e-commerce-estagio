@@ -42,6 +42,8 @@ module.exports = {
             banner.imagem = imagem ? imagem : banner.imagem
             banner.observacao = observacao ? observacao : banner.observacao
 
+            await banner.save()
+
             return res.json(banner)
             
         } catch (error) {
