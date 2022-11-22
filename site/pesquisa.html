@@ -69,7 +69,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		}
 	</style>
 </head>
-<body onload="load()">
+<body onload="getCarrinho()">
 	<div id="main" class="header">
 		<div class="container">
 			<div class="row">
@@ -100,7 +100,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<div id="sb-search" class="sb-search">
 								<form id="form">
 									<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-									<input class="sb-search-submit" type="button" id="pesquisa">
+									<input class="sb-search-submit" type="submit" value="">
 									<span class="sb-icon-search"> </span>
 								</form>
 							</div>
@@ -193,7 +193,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 												<a class="a-carrinho" onclick="addCarrinho({{id}})">Add To Cart</a>
 											</li>
 											<li class="shop_btn">
-												<a class="a-carrinho" onclick="produtoDetalhes({{id}})">Read More</a>
+												<a class="a-carrinho">Read More</a>
 											</li>
 											<div class="clear"></div>
 										</ul>
@@ -286,10 +286,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <!-- MEU-JS -->
-<script src="./js/my-js/produto-handle.js"></script>
-<script src="./js/my-js/pesquisa-set.js" ></script>
+<!-- <script src="./js/my-js/produto-handle.js"></script> -->
+<script src="./js/my-js/pesquisa-get.js" ></script>
 
 <!-- MUSTACHE -->
 <script src="https://unpkg.com/mustache@latest"></script>
+
+
 </body>	
 </html>

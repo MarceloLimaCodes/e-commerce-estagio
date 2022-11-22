@@ -161,5 +161,22 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+
+    async buscarUm(req, res) {
+        try {
+            const { id } = req.params
+
+            const produto = await Produto.findByPk(id)
+
+            if(!produto) {
+                return res.status(400).json({ error: 'Produto não encontrado' })
+            }
+
+            return res.json(produto)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }

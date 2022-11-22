@@ -30,6 +30,7 @@ routes.delete('/categorias/:id', CategoriaController.deletar)
 
 /* PRODUTOS */
 routes.get('/produtos', ProdutoController.listar)
+routes.get('/produtos/:id', ProdutoController.buscarUm)
 routes.post('/produtos/busca', ProdutoController.buscar)
 routes.post('/produtos', ProdutoController.criar)
 routes.put('/produtos/:id', ProdutoController.editar)

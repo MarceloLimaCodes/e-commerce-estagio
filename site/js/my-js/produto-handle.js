@@ -24,7 +24,6 @@ function getCarrinho() {
     .catch(error => console.log(error))
 }
 
-
 function load() {
     axios.get(`${url}/produtos`)
     .then(response => {
@@ -68,7 +67,7 @@ function addCarrinho(produtoId) {
         }
 
         if(!encontrado) {
-            // caso não encontre nenhum registro desse carrinho, crie um
+            // caso não encontre nenhum registro do prodtudo nesse carrinho, crie um
             axios.post(`${url}/carrinho`, {
                 user_id : user.id, 
                 produto_id: produtoId, 
@@ -133,11 +132,15 @@ function remover(carrinhoID) {
     .catch(error => console.log(error))
 }
 
+function produtoDetalhes(produtoID) {
+    window.location = `./single.html?id=${produtoID}`
+}
+
 function validarLogin() {
     let token = localStorage.getItem("token")
             
     if(!token) {
-        let main = document.querySelector("#main")
+        let main = document.querySelector(".main")
 
         let confirmDiv = document.createElement('div')
         confirmDiv.classList.add("confirm-div")
@@ -155,12 +158,11 @@ function validarLogin() {
             <a class="my-button-a" href="./register.html" target="_blank">Registrar</a> <br>
             
         `
-            
         confirmDiv.appendChild(confirmBox)
     }
 }
 
 function fechar() {
-    main = document.querySelector("#main")
+    let main = document.querySelector(".main")
     main.removeChild(document.querySelector('.confirm-div'))
 }
