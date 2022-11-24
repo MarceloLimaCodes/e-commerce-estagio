@@ -63,23 +63,23 @@ module.exports = {
 
 
       imagem1: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: true
       },
       imagem2: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: true
       },
       imagem3: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: true
       },
       imagem4: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: true
       },
       imagem5: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: true
       },
 

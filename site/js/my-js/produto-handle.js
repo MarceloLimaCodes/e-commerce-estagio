@@ -1,4 +1,3 @@
-
 const url = 'http://localhost:3000'
 
 function getCarrinho() {
@@ -159,6 +158,8 @@ function validarLogin() {
             
         `
         confirmDiv.appendChild(confirmBox)
+    } else {
+        alert('comprado')
     }
 }
 

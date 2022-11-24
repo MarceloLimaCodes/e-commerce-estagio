@@ -76,8 +76,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					});
 				</script>
 				<!----//details-product-slider--->	
+<style>
+	.list_desc {
+		margin-bottom: 10px;
+	}
+
+	#qnt-value {
+		border: none;
+		margin-bottom: 5px;
+		width: 97%;
+		padding: 4.5%;
+		text-align: center;
+	}
+
+	#relacionados {
+		margin-bottom: 20px;
+	}
+</style>
 </head>
-<body>
+<body onload="getCarrinho()" >
 	<div class="header">
 		<div class="container">
 			<div class="row">
@@ -126,16 +143,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						  	<a href="#"><img src="images/edit.png" alt=""/></a>
 						  		<a href="#"><img src="images/close_edit.png" alt=""/></a>
 						  </div>
-						   <div class="clear"></div>
-						  <li class="list_img"><img src="images/1.jpg" alt=""/></li>
-						  <li class="list_desc"><h4><a href="#">velit esse molestie</a></h4><span class="actual">1 x
-                          $12.00</span></li>
-						  <div class="login_buttons">
-							 <div class="check_button"><a href="checkout.html">Check out</a></div>
-							 <div class="login_button"><a href="login.html">Login</a></div>
-							 <div class="clear"></div>
-						  </div>
-						  <div class="clear"></div>
+
+						   <!-- lista do carrinho -->
+							<div id="result-carrinho">
+								<script id="template-carrinho" type="x-tmpl-mustache" >
+									{{#data}}
+										<br>
+										<li class="list_img">
+											<img src="images/1.jpg" alt=""/>
+										</li>
+										<li class="list_desc">
+											<h4><a class="a-list-cart" href="#">{{produto.nome}}</a></h4>
+											<span class="actual">{{quantidade}} x $12.00</span>
+										</li>
+									{{/data}}
+								</script>
+							</div>
+
 						</ul>
 					 </li>
 				   </ul>
@@ -151,6 +175,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<div class="row">
 				<div class="col-md-9 single_left">
 				   <div class="single_image">
+
+					
 					     <ul id="etalage">
 							<li>
 								<a href="optionallink.html">
@@ -186,8 +212,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					    </div>
 				        <!-- end product_slider -->
 				        <div class="single_right">
-				        	<h3>hendrerit in vulputate velit </h3>
-				        	<p class="m_10">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse</p>
+							<div id="result-single-nome/descricaoCurta" >
+								<script id="template-single-nome/descricaoCurta" type="x-tmpl-mustache" >
+									<h3>{{nome}} </h3> <!-- Nome do produto -->				
+									<p class="m_10">
+										{{descricao_curta}}
+									</p>
+								</script>
+							</div>
 				        	<ul class="options">
 								<h4 class="m_12">Select a Size(cm)</h4>
 								<li><a href="#">151</a></li>
@@ -233,73 +265,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				        <div class="clear"> </div>
 				</div>
 				<div class="col-md-3">
-				  <div class="box-info-product">
-					<p class="price2">$130.25</p>
-					       <ul class="prosuct-qty">
-								<span>Quantity:</span>
-								<select>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
-								</select>
-							</ul>
-							<button type="submit" name="Submit" class="exclusive">
-							   <span>Add to cart</span>
-							</button>
-				   </div>
+					<div id="result-single-valor" >
+						<script id="template-single-valor" type="x-tmpl-mustache">
+							<div class="box-info-product">
+							  	<p class="price2">${{valor}}</p>
+								<ul class="prosuct-qty">
+									<span>Quantidade:</span>
+									<input type="number" value="1" id='qnt-value' min="1">
+								</ul>
+								<button type="button" onclick="addCarrinhoSingle({{id}})" class="exclusive">
+									<span>Add to cart</span>
+								</button>
+							</div>
+
+						</script>
+					</div>
 			   </div>
-			</div>		
-			<div class="desc">
-			   	<h4>Description</h4>
-			   	<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores</p>
+			</div>
+			<div id="result-single-descricao">
+				<script id="template-single-descricao" type="x-tmpl-mustache" >
+					<div class="desc">
+						   <h4>Descrição</h4>
+						   <p>{{descricao_longa}}</p>
+					</div>
+				</script>
 			</div>
 			<div class="row">
 				<h4 class="m_11">Related Products in the same Category</h4>
-				<div class="col-md-4 product1">
-					<img src="images/s1.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
+
+				<div id="result-relacionados">
+					<script id="template-relacionados" type="x-tmpl-mustache">
+						{{#data}}
+							<div class="col-md-4 product1" id="relacionados">
+								<img src="images/s1.jpg" class="img-responsive" alt=""/> 
+								<div class="shop_desc">
+									<a href="single.html"></a>
+									<h3>
+										<a href="#">{{nome}}</a>
+									</h3>
+									<p>{{descricao_curta}}</p>
+									<span class="reducedfrom">$66.00</span>
+									<span class="actual">${{valor}}.00</span><br>
+									<ul class="buttons">
+										<li class="cart"><a href="#">Add To Cart</a></li>
+										<li class="shop_btn"><a href="#">Read More</a></li>
+										<div class="clear"> </div>
+									</ul>
+								</div>
+							</div>
+						{{/data}}
+					</script>
 				</div>
-				<div class="col-md-4 product1">
-					<img src="images/s2.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</div>
-				<div class="col-md-4">
-					<img src="images/s3.jpg" class="img-responsive" alt=""/> 
-					<div class="shop_desc"><a href="single.html">
-						</a><h3><a href="single.html"></a><a href="#">aliquam volutp</a></h3>
-						<p>Lorem ipsum consectetuer adipiscing </p>
-						<span class="reducedfrom">$66.00</span>
-						<span class="actual">$12.00</span><br>
-						<ul class="buttons">
-							<li class="cart"><a href="#">Add To Cart</a></li>
-							<li class="shop_btn"><a href="#">Read More</a></li>
-							<div class="clear"> </div>
-					    </ul>
-				    </div>
-				</div>
+				
 			</div>	
 	     </div>
 	   </div>
@@ -373,9 +390,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
    				</div>
 			</div>
 		</div>
+
 <!-- AXIOS CDN -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+<!-- MUSTACHE -->   				<!-- (Mustache tem que renderizar primeiro que os arquivos JS que o utilizam) -->	 
+<script src="https://unpkg.com/mustache@latest"></script>
+
+<!-- MEU-JS -->
 <script src="./js/my-js/produto-handle.js"></script>
+<script src="./js/my-js/pesquisa-set.js" ></script>
+<script src="./js/my-js/produto-single.js" ></script>
+
 </body>	
 </html>

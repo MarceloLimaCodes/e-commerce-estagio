@@ -24,3 +24,6 @@ pacotes:
 	
 - Para desfazer a última migration use:
 	( npx sequelize db:migrate:undo )
+
+- Para desfazer todas ss migrations use:
+	( npx sequelize db:migrate:undo:all )

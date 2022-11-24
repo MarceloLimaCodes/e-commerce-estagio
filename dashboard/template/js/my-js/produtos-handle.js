@@ -31,14 +31,37 @@ axios.get(`${url}/categorias`)
 })
 .catch(error => console.log(error))
 
+// transformar em base64
+const getBase64 = async (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file); 
+      reader.onloadend = () => {
+        const base64data = reader.result;   
+        resolve(base64data);
+      }
+    });
+}
+
 function cadastrar() {
     /* criar validação pra poder executar a função axios.post */
     
     axios.post(`${url}/categorias/busca`, { 
         nome: document.getElementById('categorias-input').value
     })
-    .then(response => {
+    .then(async (response) => {
         let categoriaEncontrada = response.data
+        let img1 = document.getElementById('imagem1').files[0];
+        let img2 = document.getElementById('imagem2').files[0];
+        let img3 = document.getElementById('imagem3').files[0];
+        let img4 = document.getElementById('imagem4').files[0];
+        let img5 = document.getElementById('imagem5').files[0];
+
+        let render1 = await getBase64(img1)
+        let render2 = await getBase64(img2)
+        let render3 = await getBase64(img3)
+        let render4 = await getBase64(img4)
+        let render5 = await getBase64(img5)
 
         axios.post(`${url}/produtos`, {
             nome: document.getElementById('nome').value,
@@ -49,19 +72,17 @@ function cadastrar() {
             desconto: document.getElementById('desconto').value,
             valor_final: document.getElementById('valorFinal').value,
     
-            imagem1: document.getElementById('imagem1').value,
-            imagem2: document.getElementById('imagem2').value,
-            imagem3: document.getElementById('imagem3').value,
-            imagem4: document.getElementById('imagem4').value,
-            imagem5: document.getElementById('imagem5').value,
+            imagem1: render1.split(',')[1],
+            imagem2: render2.split(',')[1],
+            imagem3: render3.split(',')[1],
+            imagem4: render4.split(',')[1],
+            imagem5: render5.split(',')[1],
             
             descricao_curta: document.getElementById('descricaoCurta').value,
             descricao_longa: document.getElementById('descricaoLonga').value,
         })
-        .then(response => {
-            let data = response.data
-    
-            let html = document.querySelector("*")
+        .then(() => {
+            let html = document.querySelector(".container-scroller")
     
             let confirmDiv = document.createElement('div')
             confirmDiv.classList.add("confirm-div")
@@ -82,7 +103,7 @@ function cadastrar() {
             confirmDiv.appendChild(confirmBox)
 
         })
-        .catch(error => console.log(error))
+        // .catch(error => console.log(error))
     })
     .catch(error => console.log(error))
 
@@ -90,7 +111,7 @@ function cadastrar() {
 }
 
 function fechar() {
-    html = document.querySelector("*")
+    html = document.querySelector(".container-scroller")
     html.removeChild(document.querySelector('.confirm-div'))
     window.location.reload()
 }
