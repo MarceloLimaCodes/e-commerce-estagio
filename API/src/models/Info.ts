@@ -1,13 +1,13 @@
-const { emit } = require('nodemon')
+import { Sequelize } from "sequelize-typescript"
 const { Model, DataTypes } = require('sequelize')
 
-class Banner extends Model {
-    static init(connection) {
+export class Info extends Model {
+    static init(connection: Sequelize) {
         try {
             super.init({
-                imagem: DataTypes.BLOB,
-                observacao: DataTypes.STRING,
-                
+                descricao: DataTypes.STRING,
+                visao: DataTypes.STRING,
+                missao: DataTypes.STRING,
             }, {
                 sequelize: connection
             })
@@ -18,5 +18,3 @@ class Banner extends Model {
         
     }
 }
-
-module.exports = Banner

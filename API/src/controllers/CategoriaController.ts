@@ -1,10 +1,16 @@
-const { Op } = require('sequelize')
-const Categoria = require('../models/Categoria')
+import { Request, Response } from 'express'
+import { Categoria }  from '../models/Categoria'
+import { Op } from 'sequelize'
+
+type CategoriaType = {
+    nome: string
+    observacao: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const categorias = await Categoria.findAll()
+            const categorias: Categoria = await Categoria.findAll()
 
             return res.json(categorias)
 
@@ -14,11 +20,11 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { nome, observacao } = req.body
 
-            const categoria = await Categoria.create({ nome, observacao })
+            const categoria: CategoriaType = await Categoria.create({ nome, observacao })
 
             return res.json(categoria)
 
@@ -28,12 +34,12 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { nome, observacao } = req.body
     
-            let categoria = await Categoria.findByPk(id)
+            let categoria: Categoria = await Categoria.findByPk(id)
     
             if(!categoria) {
                 return res.status(400).json({ error: 'categoria não encontrada' })
@@ -51,7 +57,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -68,11 +74,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { nome } = req.body
 
-            const categorias = await Categoria.findAll({
+            const categorias: Categoria = await Categoria.findAll({
                 where: { 
                     nome: {
                         [Op.like]: `${nome}%`

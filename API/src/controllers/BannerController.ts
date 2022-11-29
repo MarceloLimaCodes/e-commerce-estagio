@@ -1,10 +1,16 @@
-const { Op } = require('sequelize')
-const Banner = require('../models/Banner')
+import { Request, Response } from 'express'
+import { Banner } from '../models/Banner'
+import { Op } from 'sequelize'
+
+type BannerType = {
+    imagem: Buffer
+    observacao: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const banners = await Banner.findAll()
+            const banners: Banner = await Banner.findAll()
 
             return res.json(banners)
 
@@ -14,11 +20,14 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { imagem, observacao } = req.body
 
-            const banner = await Banner.create({ imagem, observacao })
+            const banner: BannerType = await Banner.create({ 
+                imagem: Buffer.from(imagem, "base64"), 
+                observacao
+            })
 
             return res.json(banner)
 
@@ -28,18 +37,18 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { imagem, observacao } = req.body
     
-            let banner = await Banner.findByPk(id)
+            let banner: Banner = await Banner.findByPk(id)
     
             if(!banner) {
                 return res.status(400).json({ error: 'Banner não encontrado' })
             }
             
-            banner.imagem = imagem ? imagem : banner.imagem
+            banner.imagem = imagem ? Buffer.from(imagem, "base64") : banner.imagem
             banner.observacao = observacao ? observacao : banner.observacao
 
             await banner.save()
@@ -51,7 +60,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -68,13 +77,13 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { observacao } = req.body
 
-            const banners = await Banner.findAll({
-                where: { 
-                    nome: {
+            const banners: Banner = await Banner.findAll({
+                where: {
+                    observacao: {
                         [Op.like]: `${observacao}%`
                     }
                 }

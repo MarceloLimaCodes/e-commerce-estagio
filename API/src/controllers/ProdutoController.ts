@@ -1,10 +1,31 @@
-const { Op } = require('sequelize')
-const Produto = require('../models/Produto')
+import { Request, Response } from 'express'
+import { Produto } from '../models/Produto'
+import { Op } from 'sequelize'
+
+type ProdutoType = {
+    nome: string
+    ativo: string
+    categoria_id: number
+    sabor: string
+    quantidade: number
+    valor: number
+    desconto: number
+    valor_final: number
+    
+    imagem1: Buffer
+    imagem2: Buffer
+    imagem3: Buffer
+    imagem4: Buffer
+    imagem5: Buffer
+
+    descricao_curta: string
+    descricao_longa: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const produtos = await Produto.findAll({
+            const produtos: Produto = await Produto.findAll({
                 include: { association: 'categoria' }
             })
             
@@ -25,7 +46,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 nome,
@@ -47,7 +68,7 @@ module.exports = {
                 descricao_longa
             } = req.body
 
-            const produto = await Produto.create({ 
+            const produto: ProdutoType = await Produto.create({ 
                 nome,
                 ativo: "true",
                 categoria_id,
@@ -75,7 +96,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const {                 
@@ -98,7 +119,7 @@ module.exports = {
                 descricao_longa 
             } = req.body
     
-            let produto = await Produto.findByPk(id)
+            let produto: Produto = await Produto.findByPk(id)
     
             if(!produto) {
                 return res.status(400).json({ error: 'produto não encontrado' })
@@ -134,7 +155,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -151,7 +172,7 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { nome } = req.body
 
@@ -173,13 +194,13 @@ module.exports = {
         }
     },
 
-    async buscarUm(req, res) {
+    async buscarUm(req: Request, res: Response) {
         try {
             const { id } = req.params
 
-            const produto = await Produto.findByPk(id)
+            const produto: Produto = await Produto.findByPk(id)
 
-            // so conseguimos retornar as imagens que contém no banco, quando batemos em alguma vazia(null), nossa execução é quebrada
+            // so conseguimos retornar as imagens que contém no banco, quando batemos em alguma vazia/null, nossa execução é quebrada
             // pegar buffer do banco e transformar em base64 novamente
             produto.imagem1 = produto.imagem1 ? produto.imagem1.toString('base64') : produto.imagem1   
             produto.imagem2 = produto.imagem2 ? produto.imagem2.toString('base64') : produto.imagem2
@@ -198,10 +219,10 @@ module.exports = {
         }
     },
 
-    async buscarPorCategoria(req, res) {
+    async buscarPorCategoria(req: Request, res: Response) {
         const { categoria_id } = req.body
 
-        const produtos = await Produto.findAll({ where: { categoria_id } })
+        const produtos: Produto = await Produto.findAll({ where: { categoria_id } })
 
         if(!produtos) {
             return res.status(400).json({ error: 'Produto não encontrado' })

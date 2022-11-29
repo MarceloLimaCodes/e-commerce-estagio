@@ -1,8 +1,24 @@
 const url = "http://localhost:3000"
 
-function cadastrar() {
+// transformar em base64
+const getBase64 = async (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file); 
+      reader.onloadend = () => {
+        const base64data = reader.result;   
+        resolve(base64data);
+      }
+    });
+}
+
+async function cadastrar() {
+    const imgBanner = document.getElementById('imagem').files[0]
+
+    let render = await getBase64(imgBanner)
+
     axios.post(`${url}/banners`, {
-        imagem: document.getElementById('imagem').value,
+        imagem: render.split(',')[1],
         observacao: document.getElementById('observacao').value
     })
     .then(() => {

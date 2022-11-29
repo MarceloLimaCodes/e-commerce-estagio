@@ -1,9 +1,18 @@
-const Venda = require('../models/Venda')
+import { Request, Response } from 'express'
+import { Venda } from '../models/Venda'
+
+type VendaType = {
+    cliente_id: number 
+    representante_id: number
+    valor: number
+    comissao: number
+    status: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const vendas = await Venda.findAll({
+            const vendas: Venda = await Venda.findAll({
                 include: [{ association: 'cliente' }, { association: 'representante' }]
             })
 
@@ -15,22 +24,21 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 cliente_id, 
                 representante_id, 
                 valor, 
                 comissao, 
-                status 
             } = req.body
 
-            const venda = await Venda.create({ 
+            const venda: VendaType = await Venda.create({ 
                 cliente_id, 
                 representante_id, 
                 valor, 
                 comissao, 
-                status
+                status: "true"
             })
 
             return res.json(venda)
@@ -41,7 +49,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { 
@@ -52,7 +60,7 @@ module.exports = {
                 status 
             } = req.body
     
-            let venda = await Venda.findByPk(id)
+            let venda: Venda = await Venda.findByPk(id)
     
             if(!venda) {
                 return res.status(400).json({ error: 'Link não encontrado' })
@@ -73,7 +81,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -90,11 +98,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { cliente_id } = req.body
 
-            const vendas = await Venda.findAll({ 
+            const vendas: Venda = await Venda.findAll({ 
                 where: { cliente_id }
             })
 

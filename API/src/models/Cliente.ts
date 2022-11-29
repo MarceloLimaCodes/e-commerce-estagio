@@ -1,8 +1,8 @@
-const { emit } = require('nodemon')
+import { Sequelize } from "sequelize-typescript"
 const { Model, DataTypes } = require('sequelize')
 
-class Cliente extends Model {
-    static init(connection) {
+export class Cliente extends Model {
+    static init(connection: Sequelize) {
         super.init({
             nome: DataTypes.STRING,
             email: DataTypes.STRING,
@@ -21,5 +21,3 @@ class Cliente extends Model {
         })
     }
 }
-
-module.exports = Cliente

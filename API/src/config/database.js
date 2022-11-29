@@ -9,4 +9,4 @@ module.exports = {
         timestamps: true,                    // created_at, updated_at
         underscored: true                    // snake case, padrão pascal case
     }
-}
+}   

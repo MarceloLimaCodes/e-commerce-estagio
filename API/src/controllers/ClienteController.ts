@@ -1,10 +1,26 @@
-const { Op } = require('sequelize')
-const Cliente = require('../models/Cliente')
+import { Request, Response } from 'express'
+import { Cliente } from '../models/Cliente'
+import { Op } from 'sequelize'
+
+type ClienteType = {
+    nome: string
+    email: string
+    celular: string
+    rua: string
+    bairro: string
+    estado: string
+    cpf: string
+    whatsapp: string
+    cep: string
+    numero: string
+    cidade: string
+    observacao: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const clientes = await Cliente.findAll()
+            const clientes: Cliente = await Cliente.findAll()
 
             return res.json(clientes)
 
@@ -14,11 +30,37 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
-            const { nome, email, celular, rua, bairro, estado, cpf, whatsapp, cep, numero, cidade, observacao } = req.body
+            const { 
+                nome, 
+                email, 
+                celular, 
+                rua, 
+                bairro, 
+                estado, 
+                cpf, 
+                whatsapp, 
+                cep, 
+                numero, 
+                cidade, 
+                observacao
+            } = req.body
 
-            const cliente = await Cliente.create({ nome, email, celular, rua, bairro, estado, cpf, whatsapp, cep, numero, cidade, observacao })
+            const cliente: ClienteType = await Cliente.create({ 
+                nome, 
+                email, 
+                celular, 
+                rua, 
+                bairro, 
+                estado, 
+                cpf, 
+                whatsapp, 
+                cep, 
+                numero, 
+                cidade, 
+                observacao 
+            })
 
             return res.json(cliente)
 
@@ -28,12 +70,25 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
-            const { nome, email, celular, rua, bairro, estado, cpf, whatsapp, cep, numero, cidade, observacao } = req.body
+            const { 
+                nome, 
+                email, 
+                celular, 
+                rua, 
+                bairro, 
+                estado, 
+                cpf,
+                whatsapp, 
+                cep, 
+                numero, 
+                cidade, 
+                observacao 
+            } = req.body
     
-            let cliente = await Cliente.findByPk(id)
+            let cliente: Cliente = await Cliente.findByPk(id)
     
             if(!cliente) {
                 return res.status(400).json({ error: 'cliente não encontrado' })
@@ -61,7 +116,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -78,11 +133,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { nome } = req.body
 
-            const clientes = await Cliente.findAll({
+            const clientes: Cliente = await Cliente.findAll({
                 where: { 
                     nome: {
                         [Op.like]: `${nome}%`

@@ -1,8 +1,8 @@
-const { emit } = require('nodemon')
+import { Sequelize } from "sequelize-typescript"
 const { Model, DataTypes } = require('sequelize')
 
-class Venda extends Model {
-    static init(connection) {
+export class Venda extends Model {
+    static init(connection: Sequelize) {
         super.init({
             valor: DataTypes.FLOAT,
             comissao: DataTypes.FLOAT,
@@ -12,10 +12,8 @@ class Venda extends Model {
         })
     }
 
-    static associate(models) {
+    static associate(models: any) {
         this.belongsTo(models.Cliente, { foreignKey: 'cliente_id', as: 'cliente' }) 
         this.belongsTo(models.Representante, { foreignKey: 'representante_id', as: 'representante' }) 
     }
 }
-
-module.exports = Venda

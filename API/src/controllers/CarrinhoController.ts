@@ -1,8 +1,15 @@
-const { Op } = require('sequelize')
-const Carrinho = require('../models/Carrinho')
+import { Request, Response } from 'express'
+import { Carrinho } from '../models/Carrinho'
+
+type CarrinhoType = {
+    user_id: number
+    produto_id: number
+    quantidade: number
+    valor_total: number
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
             const carrinhos = await Carrinho.findAll({
                 include: [{ association: 'user' }, { association: 'produto' }]
@@ -16,7 +23,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 user_id, 
@@ -25,7 +32,7 @@ module.exports = {
                 valor_total 
             } = req.body
 
-            const carrinho = await Carrinho.create({ 
+            const carrinho: CarrinhoType = await Carrinho.create({ 
                 user_id, 
                 produto_id, 
                 quantidade, 
@@ -40,7 +47,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { 
@@ -48,7 +55,7 @@ module.exports = {
                 valor_total 
             } = req.body
     
-            let carrinho = await Carrinho.findByPk(id)
+            let carrinho: Carrinho = await Carrinho.findByPk(id)
     
             if(!carrinho) {
                 return res.status(400).json({ error: 'Carrinho não encontrado' })
@@ -66,7 +73,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -83,11 +90,11 @@ module.exports = {
         }
     },
 
-    async buscarUm(req, res) {
+    async buscarUm(req: Request, res: Response) {
         try {
             const { user_id } = req.body
             
-            const carrinho = await Carrinho.findAll({
+            const carrinho: Carrinho = await Carrinho.findAll({
                 where: { user_id }, 
                 include: [{ association: 'user' }, { association: 'produto' }]
             })

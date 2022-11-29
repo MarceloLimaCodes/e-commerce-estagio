@@ -1,10 +1,17 @@
-const { Op } = require('sequelize')
-const Representante = require('../models/Representante')
+import { Request, Response } from 'express'
+import { Representante } from '../models/Representante'
+import { Op } from 'sequelize'
+
+type RepresentanteType = {
+    nome: string 
+    qnt_clientes: number 
+    comissao: number
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const representantes = await Representante.findAll()
+            const representantes: Representante = await Representante.findAll()
 
             return res.json(representantes)
 
@@ -14,11 +21,11 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { nome, qnt_clientes, comissao } = req.body
 
-            const representante = await Representante.create({ nome, qnt_clientes, comissao })
+            const representante: RepresentanteType = await Representante.create({ nome, qnt_clientes, comissao })
 
             return res.json(representante)
 
@@ -28,12 +35,12 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { nome, qnt_clientes, comissao } = req.body
     
-            let representante = await Representante.findByPk(id)
+            let representante: Representante = await Representante.findByPk(id)
     
             if(!representante) {
                 return res.status(400).json({ error: 'Representante não encontrado' })
@@ -52,7 +59,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -69,11 +76,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { nome } = req.body
 
-            const representantes = await Representante.findAll({
+            const representantes: Representante = await Representante.findAll({
                 where: { 
                     nome: {
                         [Op.like]: `${nome}%`

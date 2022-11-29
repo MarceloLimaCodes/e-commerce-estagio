@@ -1,10 +1,20 @@
-const { Op } = require('sequelize')
-const Contato = require('../models/Contato')
+import { Request, Response } from 'express'
+import { Contato } from '../models/Contato'
+
+type ContatoType = {
+    endereco: string
+    email: string
+    celular: string
+    observacao: string
+    site: string
+    whatsapp: string
+    geo_localizacao: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const contatos = await Contato.findAll()
+            const contatos: Contato = await Contato.findAll()
 
             return res.json(contatos)
 
@@ -14,7 +24,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 endereco, 
@@ -26,7 +36,7 @@ module.exports = {
                 geo_localizacao 
             } = req.body
 
-            const contato = await Contato.create({ 
+            const contato: ContatoType = await Contato.create({ 
                 endereco, 
                 email, 
                 celular,
@@ -44,7 +54,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { 
@@ -57,7 +67,7 @@ module.exports = {
                 geo_localizacao 
             } = req.body
     
-            let contato = await Contato.findByPk(id)
+            let contato: Contato = await Contato.findByPk(id)
     
             if(!contato) {
                 return res.status(400).json({ error: 'Contato não encontrado' })
@@ -80,7 +90,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -97,7 +107,7 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { email } = req.body
 

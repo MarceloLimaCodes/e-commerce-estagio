@@ -1,10 +1,16 @@
-const { Op } = require('sequelize')
-const Info = require('../models/Info')
+import { Request, Response } from 'express'
+import { Info } from '../models/Info'
+
+type InfoType = {
+    descricao: string
+    missao: string
+    visao: string
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const infos = await Info.findAll()
+            const infos: Info = await Info.findAll()
 
             return res.json(infos)
 
@@ -14,7 +20,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 descricao,
@@ -22,7 +28,7 @@ module.exports = {
                 visao
             } = req.body
 
-            const info = await Info.create({ 
+            const info: InfoType = await Info.create({ 
                 descricao,
                 missao,
                 visao
@@ -36,7 +42,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { 
@@ -45,7 +51,7 @@ module.exports = {
                 visao 
             } = req.body
     
-            let info = await Info.findByPk(id)
+            let info: Info = await Info.findByPk(id)
     
             if(!info) {
                 return res.status(400).json({ error: 'Informaçao não encontrada' })
@@ -64,7 +70,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -81,11 +87,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { id } = req.body
 
-            const infos = await Info.findAll({
+            const infos: Info = await Info.findAll({
                 where: { id }
             })
 

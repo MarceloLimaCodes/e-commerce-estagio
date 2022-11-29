@@ -1,9 +1,11 @@
-const { Op } = require('sequelize')
+import { Request, Response } from 'express'
+import { Op } from 'sequelize'
+
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const authConfig = require('../config/auth.json')
 
-const User = require('../models/User')
+import { User } from '../models/User'
 
 function generateToken(params = {}) {
     return jwt.sign(params, authConfig.secret, {
@@ -11,10 +13,21 @@ function generateToken(params = {}) {
     });
 }
 
+type UserType = {
+    nome1: string
+    nome2: string
+    email: string
+    password: string 
+    cpf: string 
+    foto_perfil: Buffer
+    permissao: string
+    ativo: string
+}
+
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const users = await User.findAll({ 
+            const users: User = await User.findAll({ 
                 attributes: ['nome1', 'nome2', 'email', 'foto_perfil']
             })
 
@@ -26,7 +39,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 nome1, 
@@ -37,9 +50,9 @@ module.exports = {
                 foto_perfil 
             } = req.body
 
-            const hash = await bcrypt.hash(password, 10);
+            const hash: string = await bcrypt.hash(password, 10);
 
-            const user = await User.create({ 
+            const user: UserType = await User.create({ 
                 nome1,
                 nome2, 
                 email, 
@@ -58,7 +71,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const {
@@ -72,7 +85,7 @@ module.exports = {
                 ativo
             } = req.body
     
-            let user = await User.findByPk(id)
+            let user: User = await User.findByPk(id)
     
             if(!user) {
                 return res.status(400).json({ error: 'Usuário não encontrado' })
@@ -96,7 +109,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
@@ -113,11 +126,11 @@ module.exports = {
         }
     },
 
-    async buscar(req, res) {
+    async buscar(req: Request, res: Response) {
         try {
             const { nome1 } = req.body
 
-            const users = await Representante.findAll({
+            const users: User = await User.findAll({
                 where: { 
                     nome: {
                         [Op.like]: `${nome1}%`
@@ -136,11 +149,11 @@ module.exports = {
         }
     },
 
-    async autenticar(req, res) {
+    async autenticar(req: Request, res: Response) {
         try {
             const { email, password } = req.body
 
-            const user = await User.findOne({ 
+            const user: User = await User.findOne({ 
                 where: { email }
             })
 

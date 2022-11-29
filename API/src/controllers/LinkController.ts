@@ -1,10 +1,18 @@
-const { Op } = require('sequelize')
-const Link = require('../models/Link')
+import { Request, Response } from 'express'
+import { Link } from '../models/Link'
+
+type LinkType = {
+    cliente_id: number
+    produto_id: number
+    valor_total: number 
+    comissao: number
+    quantidade: number
+}
 
 module.exports = {
-    async listar(req, res) {
+    async listar(req: Request, res: Response) {
         try {
-            const links = await Link.findAll({
+            const links: Link = await Link.findAll({
                 include: [{ association: 'cliente' }, { association: 'produto' }]
             })
 
@@ -16,7 +24,7 @@ module.exports = {
         
     },
     
-    async criar(req, res) {
+    async criar(req: Request, res: Response) {
         try {
             const { 
                 cliente_id, 
@@ -26,7 +34,7 @@ module.exports = {
                 quantidade 
             } = req.body
 
-            const link = await Link.create({ 
+            const link: LinkType = await Link.create({ 
                 cliente_id, 
                 produto_id, 
                 valor_total, 
@@ -34,8 +42,6 @@ module.exports = {
                 quantidade 
             })
 
-            await link.save()
-            
             return res.json(link)
 
         } catch (error) {
@@ -44,7 +50,7 @@ module.exports = {
        
     },
 
-    async editar(req, res) {
+    async editar(req: Request, res: Response) {
         try {
             const { id } = req.params
             const { 
@@ -55,7 +61,7 @@ module.exports = {
                 quantidade 
             } = req.body
     
-            let link = await Link.findByPk(id)
+            let link: Link = await Link.findByPk(id)
     
             if(!link) {
                 return res.status(400).json({ error: 'Link não encontrado' })
@@ -66,7 +72,9 @@ module.exports = {
             link.valor_total = valor_total ? valor_total : link.valor_total
             link.comissao = comissao ? comissao : link.comissao
             link.quantidade = quantidade ? quantidade : link.quantidade
-    
+            
+            await link.save()
+
             return res.json(link)
             
         } catch (error) {
@@ -74,7 +82,7 @@ module.exports = {
         }
     },
 
-    async deletar(req, res) {
+    async deletar(req: Request, res: Response) {
         try {
             const { id } = req.params
 
