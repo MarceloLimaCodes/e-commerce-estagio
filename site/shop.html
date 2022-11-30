@@ -56,13 +56,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			cursor: pointer;
 		}
 
-		/* .add-button {
-			padding: 1px;
+		#produto-imagem-thumbnail {
+			cursor: pointer;
 		}
-
-		.remove-button {
-			padding: 1px;
-		} */
 
 		.list_desc {
 			margin-bottom: 10px;
@@ -169,14 +165,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<script id="template-produto" type="x-tmpl-mustache" >
 						{{#data}}
 							<div class="col-md-3 shop_box">
-								<a href="single.html">
+								<a href="./single.html?id={{id}}">
 									<img src="images/pic8.jpg" class="img-responsive" alt=""/>
 									<span class="new-box">
 										<span class="new-label">New</span>
 									</span>
 									<div class="shop_desc">
 										<h3>
-											<a href="#">{{nome}}</a>
+											<a href="#" produtoDetalhes({{id}}) >{{nome}}</a>
 										</h3>
 										<p>
 											{{descricao_curta}}
@@ -186,7 +182,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										</span>
 										<span class="actual">
 											
-											${{valor}}.00
+											${{valor}}
 										</span><br>
 										<ul class="buttons">
 											<li class="cart">

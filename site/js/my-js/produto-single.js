@@ -16,6 +16,34 @@ axios.get(`${url}/produtos/${idParam}`)
     document.getElementById('result-single-valor').innerHTML = Mustache.render(template3, data)
 
 
+    // renderização de imagem via javascript
+    document.getElementById('imgThumb1').src = `data:image/jpg;base64,${data.imagem1}`
+    document.getElementById('img1').src = `data:image/jpg;base64,${data.imagem1}`
+
+    document.getElementById('imgThumb2').src = `data:image/jpg;base64,${data.imagem2}`
+    document.getElementById('img2').src = `data:image/jpg;base64,${data.imagem2}`
+
+    document.getElementById('imgThumb3').src = `data:image/jpg;base64,${data.imagem3}`
+    document.getElementById('img3').src = `data:image/jpg;base64,${data.imagem3}`
+
+    document.getElementById('imgThumb4').src = `data:image/jpg;base64,${data.imagem4}`
+    document.getElementById('img4').src = `data:image/jpg;base64,${data.imagem4}`
+
+    document.getElementById('imgThumb5').src = `data:image/jpg;base64,${data.imagem5}`
+    document.getElementById('img5').src = `data:image/jpg;base64,${data.imagem5}`
+
+
+    // renderização de imagem via mustache
+    // let view = {
+    //     imagem: `data:image/jpeg;base64,${data.imagem1}`
+    // }
+
+    // const templateImg = document.getElementById('template-img').innerHTML
+    // document.getElementById('result-img').innerHTML = Mustache.render(templateImg, view)
+
+    // a classe não está sendo renderizada pois está entrando em conflito com o Jquery
+
+
     axios.post(`${url}/produtos/categoria`, {
         categoria_id: data.categoria_id
     })

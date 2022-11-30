@@ -12,7 +12,6 @@ import { Banner } from '../models/Banner'
 import { User } from '../models/User'
 import { Carrinho } from '../models/Carrinho'
 
-
 const dbConfig = require('../config/database')
 const connection = new Sequelize(dbConfig)
 
