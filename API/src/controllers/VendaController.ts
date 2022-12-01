@@ -115,5 +115,22 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const venda: Venda = await Venda.findByPk(id)
+
+            if(!venda) {
+                return res.status(400).json({ error: 'Venda não encontrado' })
+            }
+
+            return res.json(venda)
+
+        } catch(error) {
+            console.log(error)
+        }
     }
 }

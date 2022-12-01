@@ -57,11 +57,11 @@ function cadastrar() {
         let img4 = document.getElementById('imagem4').files[0];
         let img5 = document.getElementById('imagem5').files[0];
 
-        let render1 = await getBase64(img1)
-        let render2 = await getBase64(img2)
-        let render3 = await getBase64(img3)
-        let render4 = await getBase64(img4)
-        let render5 = await getBase64(img5)
+        let render1 = img1 ? await getBase64(img1) : null
+        let render2 = img2 ? await getBase64(img2) : null
+        let render3 = img3 ? await getBase64(img3) : null
+        let render4 = img4 ? await getBase64(img4) : null
+        let render5 = img5 ? await getBase64(img5) : null
 
         axios.post(`${url}/produtos`, {
             nome: document.getElementById('nome').value,
@@ -72,11 +72,11 @@ function cadastrar() {
             desconto: document.getElementById('desconto').value,
             valor_final: document.getElementById('valorFinal').value,
     
-            imagem1: render1.split(',')[1],
-            imagem2: render2.split(',')[1],
-            imagem3: render3.split(',')[1],
-            imagem4: render4.split(',')[1],
-            imagem5: render5.split(',')[1],
+            imagem1: render1 ? render1.split(',')[1] : null,
+            imagem2: render2 ? render2.split(',')[1] : null,
+            imagem3: render3 ? render3.split(',')[1] : null,
+            imagem4: render4 ? render4.split(',')[1] : null,
+            imagem5: render5 ? render5.split(',')[1] : null,
             
             descricao_curta: document.getElementById('descricaoCurta').value,
             descricao_longa: document.getElementById('descricaoLonga').value,

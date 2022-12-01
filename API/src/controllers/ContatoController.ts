@@ -124,5 +124,22 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const contato: Contato = await Contato.findByPk(id)
+
+            if(!contato) {
+                return res.status(400).json({ error: 'Contato não encontrado' })
+            }
+
+            return res.json(contato)
+
+        } catch(error) {
+            console.log(error)
+        }
     }
 }

@@ -98,4 +98,21 @@ module.exports = {
             console.log(error)
         }
     },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const link: Link = await Link.findByPk(id)
+
+            if(!link) {
+                return res.status(400).json({ error: 'Link não encontrado' })
+            }
+
+            return res.json(link)
+
+        } catch(error) {
+            console.log(error)
+        }
+    }
 }

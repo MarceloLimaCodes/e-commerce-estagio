@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+  <!-- MEU CSS -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
@@ -541,7 +545,7 @@
                           <thead>
                             <tr>
                               <th>
-                                Imagem
+                                Banner
                               </th>
                               <th>
                                 Observação
@@ -556,13 +560,15 @@
                             <tbody>                                    
                               <tr class="table-primary">
                                 <td>
-                                  <img src="{{imagem}}" alt="">
+                                  <img src="data:image/jpeg;base64,{{imagem}}" alt="">
                                 </td>
                                 <td>
                                   {{observacao}}
                                 </td>
                                 <td>
-                                  ação
+                                  <button onclick="editar({{id}})" >editar</button>
+                                  <button onclick="apagarConfirm({{id}})" >apagar</button>
+                                  <button onclick="showImgs({{id}})">ver imagem</button>
                                 </td>
                               </tr>
                             </tbody>

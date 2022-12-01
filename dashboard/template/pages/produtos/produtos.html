@@ -14,6 +14,10 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+  <!-- MEU CSS  -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
+
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
@@ -21,12 +25,6 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
 
-  <style>
-    #mustache-img {
-      height: 50px;
-      width: 50px;
-    }
-  </style>
 </head>
 
 <body>
@@ -575,9 +573,7 @@
                             <tbody>
                               <tr class="table-primary">
                                 <td>
-                                  <img src="{{#imagem1.data}} {{.}} {{/imagem1.data}}" alt="">
-                                  
-                                  
+                                  <img src="data:image/jpg;base64,{{imagem1}}" alt="">
                                 </td>
                                 <td>
                                   {{nome}}
@@ -598,7 +594,9 @@
                                   {{descricao_curta}}
                                 </td> 
                                 <td>
-                                  Ação
+                                  <button onclick="editar({{id}})" >editar</button>
+                                  <button onclick="apagarConfirm({{id}})" >apagar</button>
+                                  <button onclick="showImgs({{id}})">ver imagens</button>
                                 </td>
                               </tr>
                             </tbody>

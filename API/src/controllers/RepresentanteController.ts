@@ -97,5 +97,22 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const representante: Representante = await Representante.findByPk(id)
+
+            if(!representante) {
+                return res.status(400).json({ error: 'Representante não encontrado' })
+            }
+
+            return res.json(representante)
+
+        } catch(error) {
+            console.log(error)
+        }
     }
 }

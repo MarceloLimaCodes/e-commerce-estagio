@@ -12,6 +12,11 @@ module.exports = {
         try {
             const banners: Banner = await Banner.findAll()
 
+            // pegar buffer do banco e transformar em base64 novamente
+            for(let i = 0; i < banners.length; i++) {
+                banners[i].imagem = banners[i].imagem ? banners[i].imagem.toString('base64') : banners[i].imagem   
+            }
+
             return res.json(banners)
 
         } catch (error) {
@@ -98,5 +103,25 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
-    }
+    },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const banner: Banner = await Banner.findByPk(id)
+
+            // pegar buffer do banco e transformar em base64 novamente
+            banner.imagem = banner.imagem ? banner.imagem.toString('base64') : banner.imagem   
+
+            if(!banner) {
+                return res.status(400).json({ error: 'Banner não encontrado' })
+            }
+
+            return res.json(banner)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    },
 }

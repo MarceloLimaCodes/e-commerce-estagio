@@ -93,5 +93,22 @@ module.exports = {
         } catch (error) {
             console.log(error)
         }
+    },
+
+    async buscarUm(req: Request, res: Response) {
+        try {
+            const { id } = req.params
+
+            const categoria: Categoria = await Categoria.findByPk(id)
+
+            if(!categoria) {
+                return res.status(400).json({ error: 'Categoria não encontrado' })
+            }
+
+            return res.json(categoria)
+
+        } catch(error) {
+            console.log(error)
+        }
     }
 }

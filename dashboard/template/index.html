@@ -606,67 +606,34 @@
                                 Add class <code>.table-{color}</code> <strong> cada cor tem um significado</strong>
                               </p>
                               <div class="table-responsive pt-3">
-                                <table class="table table-bordered">
-                                  <thead>
-                                    <tr>
-                                      <th>
-                                        Nome
-                                      </th>
-                                      <th>
-                                        Comissão
-                                      </th>
-                                      
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr class="table-info">
-                                      <td>
-                                        Herman Beck
-                                      </td>
-                                      <td>
-                                        999.999.999-99
-                                      </td>
-                                      
-                                    </tr>
-                                    <tr class="table-warning">
-                                      <td>
-                                        Messsy Adam
-                                      </td>
-                                      <td>
-                                        999.999.999-99
-                                      </td>
-                                      
-                                    </tr>
-                                    <tr class="table-danger">
-                                      <td>
-                                        John Richards
-                                      </td>
-                                      <td>
-                                        999.999.999-99
-                                      </td>
-                                      
-                                    </tr>
-                                    <tr class="table-success">
-                                      <td>
-                                        Peter Meggik
-                                      </td>
-                                      <td>
-                                        999.999.999-99
-                                      </td>
-                                      
-                                    </tr>
-                                    <tr class="table-primary">
-                                      <td>
-                                        Edward
-                                      </td>
-                                      <td>
-                                        999.999.999-99
-                                      </td>
-                                      
-                                   
-                                    </tr>
-                                  </tbody>
-                                </table>
+                                <div id="result-representante"></div>
+                                <script id="template-representante" type="x-tmpl-mustache">
+                                  <table class="table table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th>
+                                          Nome
+                                        </th>
+                                        <th>
+                                          Comissão
+                                        </th>
+                                      </tr>
+                                    </thead>
+
+                                    {{#data}}
+                                      <tbody>
+                                        <tr class="table-primary">
+                                          <td>
+                                            {{nome}}
+                                          </td>
+                                          <td>
+                                            {{comissao}}
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    {{/data}}
+                                  </table>
+                                </script>
                               </div>
                             </div>
                           </div>
@@ -718,9 +685,14 @@
   <script src="js/Chart.roundedBarCharts.js"></script>
   <!-- End custom js for this page-->
   
+  <!-- AXIOS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+  <!-- MUSTACHE -->
+  <script src="https://unpkg.com/mustache@latest"></script>
 
   <!-- MEU JAVASCRIPT -->
+  <script src="js/my-js/representantes-handle.js"></script>
   <script src="js/my-js/my-dashboard.js"></script>
 </body>
 

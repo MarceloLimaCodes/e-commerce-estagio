@@ -16,6 +16,7 @@ const routes = express.Router()
 
 /* CLIENTES */
 routes.get('/clientes', ClienteController.listar)
+routes.get('/clientes/:id', ClienteController.buscarUm)
 routes.post('/clientes/busca', ClienteController.buscar)
 routes.post('/clientes', ClienteController.criar)
 routes.put('/clientes/:id', ClienteController.editar)
@@ -23,6 +24,7 @@ routes.delete('/clientes/:id', ClienteController.deletar)
 
 /* CATEGORIAS */
 routes.get('/categorias', CategoriaController.listar)
+routes.get('/categorias/:id', CategoriaController.buscarUm)
 routes.post('/categorias/busca', CategoriaController.buscar)
 routes.post('/categorias', CategoriaController.criar)
 routes.put('/categorias/:id', CategoriaController.editar)
@@ -39,6 +41,7 @@ routes.delete('/produtos/:id', ProdutoController.deletar)
 
 /* REPRESENTANTES */
 routes.get('/representantes', RepresentanteController.listar)
+routes.get('/representantes/:id', RepresentanteController.buscarUm)
 routes.post('/representantes/busca', RepresentanteController.buscar)
 routes.post('/representantes', RepresentanteController.criar)
 routes.put('/representantes/:id', RepresentanteController.editar)
@@ -46,12 +49,14 @@ routes.delete('/representantes/:id', RepresentanteController.deletar)
 
 // LINKS
 routes.get('/links', LinkController.listar)
+routes.get('/links/:id', LinkController.buscarUm)
 routes.post('/links', LinkController.criar)
 routes.put('/links/:id', LinkController.editar)
 routes.delete('/links/:id', LinkController.deletar)
 
 // VENDAS
 routes.get('/vendas', VendaController.listar)
+routes.get('/vendas/:id', VendaController.buscarUm)
 routes.post('/vendas/busca', VendaController.buscar)
 routes.post('/vendas', VendaController.criar)
 routes.put('/vendas/:id', VendaController.editar)
@@ -59,6 +64,7 @@ routes.delete('/vendas/:id', VendaController.deletar)
 
 // CONTATOS
 routes.get('/contatos', ContatoController.listar)
+routes.get('/contatos/:id', ContatoController.buscarUm)
 routes.post('/contatos/busca', ContatoController.buscar)
 routes.post('/contatos', ContatoController.criar)
 routes.put('/contatos/:id', ContatoController.editar)
@@ -66,6 +72,7 @@ routes.delete('/contatos/:id', ContatoController.deletar)
 
 // SOBRE NÓS (INFOS)
 routes.get('/infos', InfoController.listar)
+routes.get('/infos/:id', InfoController.buscarUm)
 routes.post('/infos/busca', InfoController.buscar)
 routes.post('/infos', InfoController.criar)
 routes.put('/infos/:id', InfoController.editar)
@@ -73,6 +80,7 @@ routes.delete('/infos/:id', InfoController.deletar)
 
 // BANNER
 routes.get('/banners', BannerController.listar)
+routes.get('/banners/:id', BannerController.buscarUm)
 routes.post('/banners/busca', BannerController.buscar)
 routes.post('/banners', BannerController.criar)
 routes.put('/banners/:id', BannerController.editar)

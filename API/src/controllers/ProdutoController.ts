@@ -200,7 +200,6 @@ module.exports = {
 
             const produto: Produto = await Produto.findByPk(id)
 
-            // so conseguimos retornar as imagens que contém no banco, quando batemos em alguma vazia/null, nossa execução é quebrada
             // pegar buffer do banco e transformar em base64 novamente
             produto.imagem1 = produto.imagem1 ? produto.imagem1.toString('base64') : produto.imagem1   
             produto.imagem2 = produto.imagem2 ? produto.imagem2.toString('base64') : produto.imagem2

@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="../../vendors/simple-line-icons/css/simple-line-icons.css">
   <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
   <!-- endinject -->
+
+  <!-- MEU CSS -->
+  <link rel="stylesheet" href="../../css/my-css/box-mensagem.css">
   <!-- Plugin css for this page -->
   <!-- End plugin css for this page -->
   <!-- inject:css -->
@@ -568,7 +571,8 @@
                                 {{observacao}}
                               </td>
                               <td>
-                                ação
+                                <button onclick="editar({{id}})">editar</button>
+                                <button onclick="apagarConfirm({{id}})">apagar</button>
                               </td>
                             </tr>
                           {{/data}}
@@ -605,7 +609,7 @@
   <!-- MUSTACHE -->
   <script src="https://unpkg.com/mustache@latest"></script>
 
-  <!-- categorias-listagem e MUSTACHE RENDER (get all categorias) -->
+  <!-- MEU JAVASCRIPT -->
   <script src="../../js/my-js/categorias-handle.js"></script>
 
   <!-- container-scroller -->

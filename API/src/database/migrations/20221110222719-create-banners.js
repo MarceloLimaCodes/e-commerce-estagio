@@ -12,7 +12,7 @@ module.exports = {
       },
 
       imagem: {
-        type: Sequelize.BLOB,
+        type: Sequelize.BLOB('long'),
         allowNUll: false
       },
       
